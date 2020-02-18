@@ -47,14 +47,34 @@ Please set the absolute path for three programs in "Gcluster/Gcluster.pl", as in
 * my $blastp        = "/usr/bin/blastp";
 * my $makeblastdb   = "/usr/bin/makeblastdb";
 * my $MCL           = "/usr/bin/mcl";
+
 These software dependencies can be checked and the configuration file created using the **./test.pl** script as below:
 
 	$ perl ./test.pl
-	Checking for Software dependencies...
-	Checking for OthoMCL ... OK
-	Checking for formatdb ... OK
-	Checking for blastall ... OK
-	Checking for mcl ... OK
+	Test-step1: Checks for Gcluster dependencies...
+	################################################################
+	***GD Version	 2.71	ok.
+	***GD::SVG Version	 0.33	ok.
+	***SVG Version	 2.84	ok.
+	***threads Version	 2.15	ok.
+	***File::Basename Version	 2.85	ok.
+	***FindBin Version	 1.51	ok.
+	***lib Version	 0.63	ok.
+	***Getopt::Long Version	 2.49	ok.
+	***Math::BigFloat Version	 1.999806	ok.
+	***Storable Version	 3.15	ok.
+	***vars Version	 1.03	ok.
+	***File::Spec Version	 3.75	ok.
+	***Bio::SeqIO Version	 1.007002	ok.
+	***Bio::Tree::NodeI Version	 	ok.
+	***Bio::TreeIO Version	 1.007002	ok.
+	!!!Ok, all dependencies Perl modulers are installed*
+
+	----------------------------------------------------------------
+	Checking for makeblastdb ... OK, makeblastdb is installed at: /miniconda3/bin/makeblastdb
+	Checking for blastp ... OK, blastp is installed at: /miniconda3/bin/blastp
+	Checking for mcl ... OK, mcl is installed at: /miniconda3/bin/mcl
+	################################################################
 	
 
 Step 3: Testing
