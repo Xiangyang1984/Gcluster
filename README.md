@@ -78,15 +78,41 @@ These software dependencies can be checked and the configuration file created us
 
 Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
 
-	$ perl ./test.pl -m orthomcl.conf -s fork -t /tmp
-	Test using scheduler fork
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -m 9
 	
-	TESTING NON-COMPLIANT INPUT
-	TESTING FULL PIPELINE RUN 3
-	README:
-	Tests case of one gene (in 1.fasta and 2.fasta) not present in other files.
-	ok 1 - Expected matched returned groups file
-	...
+	Test-step2: Begin test Gcluster.pl...
+	################################################################
+
+	Tue Feb 18 13:16:12 2020: Gcluster start...
+
+	GenBank_extraction_percent: 11...22...33...44...55...66...77...88...100...done
+	Step 1-1: Extract all predicted proteomic sequences of each genebank file in folder, and transformat protein sequence into a ID-sequence hash
+
+	Step 1-2: Extract all feature table of each genebank file in folder
+
+	Step 2: Generate a sub-TFT table file containing the gene information flanking the interested gene
+
+	Step 3: Extract the interested gene related sub-proteomic sequences according the sub-TFT table files
+	Blast_perform_percent: 11...22...33...44...55...66...77...88...100...done
+
+	Step 4: Obtain the homologous gene clusters information
+
+	Step 5(-PNG): Be going to create a size of 992.575x655 PNG image
+
+	Step 6(-PNG): PNG format was chosen to map
+
+	Step 7(-PNG): PNG Figure will be generated, please wait!!!
+
+	Step 5(-SVG): Be going to create a size of 932.735x655 SVG image
+
+	Step 6(-SVG): SVG format was chosen to map
+
+	Step 7(-SVG): SVG Figure will be generated, please wait!!!
+	Tue Feb 18 13:16:27 2020: Finished!
+	################################################################
+	Ok, Gcluster.pl works success!
+
+
 
 Once all tests have passed then you are ready to start using the OrthoMCL pipeline.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
@@ -95,10 +121,6 @@ Step 5: Running
 
 You should now be able to run Gcluster with:
 
-	$ perl ./Gcluster.pl
-	Error: no input-dir defined
-	Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
-	...
 
 You can now follow the main instructions for how to perform OrthoMCL analyses.
 
