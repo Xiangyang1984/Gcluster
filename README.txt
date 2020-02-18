@@ -1,7 +1,7 @@
 # Gcluster_v1.01
 Gcluster is a simple tool for visualizing and comparing genome contexts for massive genomes. It is freely available at
 http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source 
-GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (GD, GD::SVG) to
+GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to
 be installed before use.
 
 1. Installation of required Perl modules and programs
@@ -22,6 +22,7 @@ Step 1: Perl Modules Dependencies:
 * Math::BigFloat;
 * Storable;
 * vars;
+* File::Spec;
 * Bio::SeqIO; (part of BioPerl, http://bioperl.org)
 * Bio::Tree::NodeI; (part of BioPerl, http://bioperl.org)
 * Bio::TreeIO; (part of BioPerl, http://bioperl.org)
@@ -85,6 +86,9 @@ genomes used as input files to create Fig. 1 in manuscript.
 
     OPTIONAL ARGUMENTS:
     ~~~~~~~~~~~~~~~~~~~
+       -o, --Gcluster_output_directory
+             An output directory holding all the generated files by Gcluster.pl. if this option is not set, Gcluster will create a 
+             directory named "Gcluster_workplace" in the bin directory from where Gcluster.pl was invoked. 
        -tree, --phylogenetic_file
              A Newick format tree file is used by Gcluster to automatically accociate the genomes with their phylogeny.
              Meanwhile, Gcluster will output a file named "temp_strain_reorder_file", which contains the order information of
