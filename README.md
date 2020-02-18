@@ -4,12 +4,11 @@ Gcluster_v2.01
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
   
 ## Installing the Gcluster
-
+----------------------------------
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
 
 	$ git clone https://github.com/xiangyang1984/Gcluster.git
 ### Step 1: Perl Modules Dependencies
-----------------------------------
 
 The Gcluster requires Perl as well as the following Perl modules.
 
@@ -35,7 +34,6 @@ These can be installed with cpan using:
 
 
 ### Step 2: Programs Dependencies
-------------------------------
 
 Additional software dependencies for the pipeline are as follows:
 
@@ -77,7 +75,6 @@ These software dependencies can be checked and the configuration file created us
 	
 
 ### Step 3: Testing
----------------
 
 Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
 
