@@ -78,6 +78,8 @@ These software dependencies can be checked and the configuration file created us
 
 Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
 
+	$ cd Gcluster-master
+	
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -m 9
 	
 	Test-step2: Begin test Gcluster.pl...
@@ -111,6 +113,64 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	Tue Feb 18 13:16:27 2020: Finished!
 	################################################################
 	Ok, Gcluster.pl works success!
+
+**Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.**
+a gene of interest file generated looks like:
+
+```
+THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
+THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
+CD04_RS0114760	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd	|none_tophit_gene:	CD04_RS0111545#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd
+ACO7_RS14195	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO7
+THI_RS14560	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_arsenitoxydans_3As
+TINT_RS15335	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_K12
+THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
+BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
+ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
+```
+**Run interested_gene_generation.pl to enble users to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.**
+	$ cd Gcluster-master
+	
+	$ perl ./interested_gene_generation.pl -dir ./test_data/gbk -db ./test_data/aioB.fasta -m 9
+	
+	Test-step3: Begin test interested_gene_generation.pl...
+	################################################################
+
+	Tue Feb 18 13:16:27 2020: interested_gene_generation.pl start...
+
+	/Users/zilinyang/Desktop/git-l
+	Genbank_extraction: 1
+	Genbank_extraction: 2
+	Genbank_extraction: 3
+	Genbank_extraction: 4
+	Genbank_extraction: 5
+	Genbank_extraction: 6
+	Genbank_extraction: 7
+	Genbank_extraction: 8
+	Genbank_extraction: 9
+	Blast_perform: 1
+	Blast_perform: 2
+	Blast_perform: 3
+	Blast_perform: 4
+	Blast_perform: 5
+	Blast_perform: 6
+	Blast_perform: 7
+	Blast_perform: 8
+	Blast_perform: 9
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Warning: [blastp] Examining 5 or more matches is recommended
+	Tue Feb 18 13:17:01 2020: Finished!
+	################################################################
+	Ok, interested_gene_generation.pl works success!
+
+
 
 
 
