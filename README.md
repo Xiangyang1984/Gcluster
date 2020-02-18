@@ -190,17 +190,18 @@ The brief overview of running the Gcluster is as follows:
 * (2) interested_gene_file (mandatory option): A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
 * (3) phylogenetic_file (optional option): A phylogenetic tree as Newick format, is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript in "Gcluster/script" directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like MEGA (https://www.megasoftware.net/).
 * (4) strain_reorder_file: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
+
 strain_name | order
 - | -
-Thiomonas\_sp.\_FB-Cd|	1
-Thiomonas\_sp.\_X19|	2
-Thiomonas\_delicata\_DSM\_16361|	3
-Thiomonas\_intermedia_ATCC_15466|	4
-Thiomonas\_sp.\_B1|	5
-Thiomonas\_sp.\_ACO7|	6
-Thiomonas\_intermedia\_K12|	8
-Thiomonas\_arsenitoxydans_3As|	7
-Thiomonas\_sp.\_ACO3|	9
+Thiomonas\_sp.\_FB-Cd| 1
+Thiomonas\_sp.\_X19| 2
+Thiomonas\_delicata\_DSM\_16361| 3
+Thiomonas\_intermedia_ATCC_15466| 4
+Thiomonas\_sp.\_B1| 5
+Thiomonas\_sp.\_ACO7| 6
+Thiomonas\_intermedia\_K12| 8
+Thiomonas\_arsenitoxydans_3As| 7
+Thiomonas\_sp.\_ACO3| 9
 
 
 ```Perl
