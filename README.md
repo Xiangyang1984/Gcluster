@@ -8,7 +8,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
 
 	$ git clone https://github.com/xiangyang1984/Gcluster.git
-Step 1: Perl Modules Dependencies
+### Step 1: Perl Modules Dependencies
 ----------------------------------
 
 The Gcluster requires Perl as well as the following Perl modules.
@@ -34,7 +34,7 @@ These can be installed with cpan using:
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-Step 2: Programs Dependencies
+### Step 2: Programs Dependencies
 ------------------------------
 
 Additional software dependencies for the pipeline are as follows:
@@ -42,7 +42,7 @@ Additional software dependencies for the pipeline are as follows:
 * makeblastdb and blastp in NCBI BLAST+, which is available from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
 * mcl (Markov Clustering algorithm), is available at http://micans.org/mcl/
 
-***Please set the absolute path for three programs in "Gcluster/Gcluster.pl", as in the following example:***
+***Please set the absolute path for three programs within "Gcluster/Gcluster.pl", as in the following example:***
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 * *my $MCL           = "/usr/bin/mcl";*
@@ -76,7 +76,7 @@ These software dependencies can be checked and the configuration file created us
 	################################################################
 	
 
-Step 3: Testing
+### Step 3: Testing
 ---------------
 
 Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
