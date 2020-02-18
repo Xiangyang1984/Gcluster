@@ -115,7 +115,8 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	Ok, Gcluster.pl works success!
 
 *Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
-a gene of interest file generated looks like:
+
+A gene of interest file generated looks like:
 
 ```
 THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
