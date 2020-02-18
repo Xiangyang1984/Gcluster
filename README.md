@@ -129,6 +129,7 @@ BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_AT
 ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 ```
 **Run interested_gene_generation.pl to enble users to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.**
+
 	$ cd Gcluster-master
 	
 	$ perl ./interested_gene_generation.pl -dir ./test_data/gbk -db ./test_data/aioB.fasta -m 9
