@@ -114,7 +114,7 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	################################################################
 	Ok, Gcluster.pl works success!
 
-**Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.**
+*Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
 a gene of interest file generated looks like:
 
 ```
@@ -128,7 +128,7 @@ THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
 BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
 ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 ```
-**Run interested_gene_generation.pl to enble users to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.**
+*Run interested_gene_generation.pl*
 
 	$ cd Gcluster-master
 	
@@ -170,10 +170,6 @@ ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 	Tue Feb 18 13:17:01 2020: Finished!
 	################################################################
 	Ok, interested_gene_generation.pl works success!
-
-
-
-
 
 Once all tests have passed then you are ready to start using the OrthoMCL pipeline.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
