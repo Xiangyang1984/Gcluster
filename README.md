@@ -114,21 +114,6 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	################################################################
 	Ok, Gcluster.pl works success!
 
-*Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
-
-A gene of interest file generated looks like:
-
-```
-THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
-THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
-CD04_RS0114760	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd	|none_tophit_gene:	CD04_RS0111545#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd
-ACO7_RS14195	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO7
-THI_RS14560	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_arsenitoxydans_3As
-TINT_RS15335	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_K12
-THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
-BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
-ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
-```
 *interested_gene_generation.pl can be run as follows:*
 
 	$ cd Gcluster-master
@@ -185,9 +170,36 @@ You can now follow the main instructions for how to perform OrthoMCL analyses.
 Detailed Usage
 --------------
 The brief overview of running the Gcluster is as follows:
-1. Preperation of input data
+#### Preperation of input data
+##### Genbank_file_directory
 * (1) Genbank_file_directory (mandatory option): A Directory containing annotated genomes as Genbank format file. For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+
+##### interested_gene_file
 * (2) interested_gene_file (mandatory option): A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
+
+*Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
+
+A gene of interest file generated looks like:
+
+```
+THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
+THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
+CD04_RS0114760	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd	|none_tophit_gene:	CD04_RS0111545#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd
+ACO7_RS14195	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO7
+THI_RS14560	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_arsenitoxydans_3As
+TINT_RS15335	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_K12
+THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
+BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
+ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
+```
+Users can obtained an interested_gene_file using interested_gene_generation.pl:
+$ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
+aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
+```
+$ cat test_data/aioB.fasta
+>YO5_RS17935
+MSQFKDRVPLPPIDAQKTNMACHFCIVGCGYHVYKWPANKEGGRAPEQNALNVDFTRQVPPMQITMTPAMVNRIKDNDGSEHNIMIIPDKECEVNKGLSSTRGGQMASIMYSENTPIGERRLKVPMLYTGDDWIETTWQQSMDIYAGLTKRILDEDGPEQILFNLFDHGGAGGGFENTWATGKLIFSGIGTPMVRIHNRPAYNSECHATRDMGVGELNNSYEDAELADVLISIGNNPYESQTNYFLAHWVPNLQGATTGKKKERYPGESFAKAKIIFVDPRRTISVDISETVAGKDHVLHLAINPGTDTALFNGLLTYVVEKGWQDDEFIQNHTTGFDDTLASNKLSLSECSVITGITEDDLRKAAEWAYQPKESGHAPRTMHAYEKGVIWGNDNYRIQSSIVNLVLATHNVGRRGTGVVRMGGHQEGYVRPPYPGGRPAPYIDQEIIKNNGMMLTVWACNAFQTTVNAETYREAVKRRANIVNQALAKARGASTEQLINIIYDAVKNQGGLYLVDIDLYRTKFADSSHMLLPAAHPGEMNLTSMNGERRLRLSERFMDPPGIAKADCMIAADMANALKRLYEGEGNTEMAQRFSGFDWQSEEDSFNDGFRMAHEKEIDSQGGPTGHLATYERLRAAGTNGVQLPIKEYRDGKLIGTEILYSDNTFDTDDGKAHFQPSPWNGFPAVIEAQQKNHAFWINNGRTNHIWQSAYHDQHLSFRKGRFPMAPLEINPEDAAQLGIAAGDIVEIYNDYGATYAMAYPEPDIKRGQVFMMFGYPNGVQGDTVSEWTDRNVIPYYKGAWADIRKVGENEAYKHSVSFKRRRYS
+```
 * (3) phylogenetic_file (optional option): A phylogenetic tree as Newick format, is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript in "Gcluster/script" directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like MEGA (https://www.megasoftware.net/).
 * (4) strain_reorder_file: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
