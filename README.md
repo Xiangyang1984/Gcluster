@@ -42,10 +42,10 @@ Additional software dependencies for the pipeline are as follows:
 * makeblastdb and blastp in NCBI BLAST+, which is available from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
 * mcl (Markov Clustering algorithm), is available at http://micans.org/mcl/
 
-**Please set the absolute path for three programs in "Gcluster/Gcluster.pl", as in the following example:**
-* my $blastp        = "/usr/bin/blastp";
-* my $makeblastdb   = "/usr/bin/makeblastdb";
-* my $MCL           = "/usr/bin/mcl";
+***Please set the absolute path for three programs in "Gcluster/Gcluster.pl", as in the following example:***
+* *my $blastp        = "/usr/bin/blastp";*
+* *my $makeblastdb   = "/usr/bin/makeblastdb";*
+* *my $MCL           = "/usr/bin/mcl";*
 
 These software dependencies can be checked and the configuration file created using the **./test.pl** script as below:
 
@@ -108,7 +108,7 @@ You can now follow the main instructions for how to perform OrthoMCL analyses.
 Detailed Usage
 --------------
 
-```
+```Perl
 Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
     REQUIRED ARGUMENTS:
     ~~~~~~~~~~~~~~~~~~~
