@@ -1,0 +1,9 @@
+THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
+THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
+CD04_RS0114760	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd	|none_tophit_gene:	CD04_RS0111545#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd
+ACO7_RS14195	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO7
+THI_RS14560	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_arsenitoxydans_3As
+TINT_RS15335	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_K12
+THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
+BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
+ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
