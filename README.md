@@ -1,69 +1,94 @@
-# Gcluster_v1.01
-Gcluster is a simple tool for visualizing and comparing genome contexts for massive genomes. It is freely available at
-http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source 
-GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to
-be installed before use.
-- Installing the OrthoMCL Pipeline
-1. Installation of required Perl modules and programs
-======================================================
-Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl Modules
-and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set.
+Gcluster_v2.01
+=================
 
-Step 1: Perl Modules Dependencies:
+Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
+	$ git clone https://github.com/xiangyang1984/Gcluster.git
+  
+Installing the Gcluster
+================================
+
+Step 1: Perl Modules Dependencies
 ----------------------------------
+
+The Gcluster requires Perl as well as the following Perl modules.
+
 * GD;
 * GD::SVG;
 * SVG;
 * threads;
 * File::Basename;
 * FindBin;
+* File::Spec;
 * lib;
 * Getopt::Long;
 * Math::BigFloat;
 * Storable;
 * vars;
-* File::Spec;
 * Bio::SeqIO; (part of BioPerl, http://bioperl.org)
 * Bio::Tree::NodeI; (part of BioPerl, http://bioperl.org)
 * Bio::TreeIO; (part of BioPerl, http://bioperl.org)
 
 These can be installed with cpan using:
-$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
+
+	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-Step 2: Programs Dependencies:
+Step 2: Programs Dependencies
 ------------------------------
+
+Additional software dependencies for the pipeline are as follows:
+
 * makeblastdb and blastp in NCBI BLAST+, which is available from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
 * mcl (Markov Clustering algorithm), is available at http://micans.org/mcl/
-              
+
 Please set the absolute path for three programs in "Gcluster/Gcluster.pl", as in the following example:
-my $blastp        = "/usr/bin/blastp";
-my $makeblastdb   = "/usr/bin/makeblastdb";
-my $MCL           = "/usr/bin/mcl";
+* my $blastp        = "/usr/bin/blastp";
+* my $makeblastdb   = "/usr/bin/makeblastdb";
+* my $MCL           = "/usr/bin/mcl";
+These software dependencies can be checked and the configuration file created using the **./test.pl** script as below:
 
- These software dependencies can be checked and the configuration file created using the **scripts/setup.pl** script as below:
+	$ perl ./test.pl
+	Checking for Software dependencies...
+	Checking for OthoMCL ... OK
+	Checking for formatdb ... OK
+	Checking for blastall ... OK
+	Checking for mcl ... OK
+	
 
+Step 3: Testing
+---------------
 
+Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
 
+	$ perl ./test.pl -m orthomcl.conf -s fork -t /tmp
+	Test using scheduler fork
+	
+	TESTING NON-COMPLIANT INPUT
+	TESTING FULL PIPELINE RUN 3
+	README:
+	Tests case of one gene (in 1.fasta and 2.fasta) not present in other files.
+	ok 1 - Expected matched returned groups file
+	...
 
+Once all tests have passed then you are ready to start using the OrthoMCL pipeline.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
-2. Running Gcluster
-====================
- 
-perl Gcluster.pl -dir genbank_file_directory -gene interested_gene_file [options]
+Step 5: Running
+---------------
 
-FOR EXAMPLE: 
-perl /home/xiangyang/Gcluster_v1.01-master/Gcluster.pl -dir /home/xiangyang/Gcluster_v1.01-master/test_data/gbk -gene
-/home/xiangyang/Gcluster_v1.01-master/test_data/interested_gene_name.txt -tree /home/xiangyang/Gcluster_v1.01-
-master/test_data/full_NJ_rRNA_tree.nwk -m 3
+You should now be able to run Gcluster with:
 
-Large test data is available at website (http://www.microbialgenomic.com/160_genomes_testdata.tar.gz). It contains 160 annotated 
-genomes used as input files to create Fig. 1 in manuscript.
+	$ perl ./Gcluster.pl
+	Error: no input-dir defined
+	Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
+	...
 
+You can now follow the main instructions for how to perform OrthoMCL analyses.
 
-3. Gcluster parameters
-=======================
+Detailed Usage
+--------------
 
+```
+Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
     REQUIRED ARGUMENTS:
     ~~~~~~~~~~~~~~~~~~~
        -dir, --genbank_file_directory
@@ -86,9 +111,6 @@ genomes used as input files to create Fig. 1 in manuscript.
 
     OPTIONAL ARGUMENTS:
     ~~~~~~~~~~~~~~~~~~~
-       -o, --Gcluster_output_directory
-             An output directory holding all the generated files by Gcluster.pl. if this option is not set, Gcluster will create a 
-             directory named "Gcluster_workplace" in the bin directory from where Gcluster.pl was invoked. 
        -tree, --phylogenetic_file
              A Newick format tree file is used by Gcluster to automatically accociate the genomes with their phylogeny.
              Meanwhile, Gcluster will output a file named "temp_strain_reorder_file", which contains the order information of
@@ -213,8 +235,27 @@ genomes used as input files to create Fig. 1 in manuscript.
        -h, --help
              Show this message.
 
+	Examples:
+	orthomcl-pipeline -i input/ -o output/ -m orthomcl.config
+		Runs orthomcl using the input fasta files under input/ and orthomcl.confg as config file.
+		Places data in output/.  Gets other parameters (blast, etc) from default config file.
 
-Dr. Xiangyang Li (E-mail: lixiangyang@fudan.edu.cn, lixiangyang1984@gmail.com), Fudan university; Kaili University; Bacterial
-Genome Data mining & Bioinformatic Analysis (http://www.microbialgenomic.com/).
+	orthomcl-pipeline -i input/ -o output/ -m orthomcl.config -c orthomcl-pipeline.conf
+		Runs orthomcl using the given input/output directories.  Overrides parameters (blast, etc)
+		from file orthomcl-pipeline.conf.
 
-Copyright 2019, Xiangyang Li. All Rights Reserved.
+	orthomcl-pipeline --print-config
+		Prints default orthomcl-pipeline.conf config file (which can then be changed).
+
+	orthomcl-pipeline --print-orthomcl-config
+		Prints orthomcl example config file which must be changed to properly run.
+
+	orthomcl-pipeline -i input/ -o output/ -m orthomcl.confg --compliant
+		Runs orthmcl with the given input/output/config files.
+		Skips the orthomclAdjustFasta stage on input files.
+
+	orthomcl-pipeline -i input/ -o output/ -m orthomcl.confg --no-cleanup
+		Runs orthmcl with the given input/output/config files.
+		Does not cleanup temporary tables.
+```
+
