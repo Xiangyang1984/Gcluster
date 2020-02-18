@@ -192,15 +192,17 @@ The brief overview of running the Gcluster is as follows:
 * (4) strain_reorder_file: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 strain_name | order
 - | -
-Thiomonas_sp._FB-Cd | 1
-Thiomonas_sp._X19 | 2
-Thiomonas_delicata_DSM_16361|	3
-Thiomonas_intermedia_ATCC_15466|	4
-Thiomonas_sp._B1|	5
-Thiomonas_sp._ACO7|	6
-Thiomonas_intermedia_K12|	8
-Thiomonas_arsenitoxydans_3As|	7
-Thiomonas_sp._ACO3|	9
+Thiomonas\_sp.\_FB-Cd|	1
+Thiomonas\_sp.\_X19|	2
+Thiomonas\_delicata\_DSM\_16361|	3
+Thiomonas\_intermedia_ATCC_15466|	4
+Thiomonas\_sp.\_B1|	5
+Thiomonas\_sp.\_ACO7|	6
+Thiomonas\_intermedia\_K12|	8
+Thiomonas\_arsenitoxydans_3As|	7
+Thiomonas\_sp.\_ACO3|	9
+
+
 ```Perl
 Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
     REQUIRED ARGUMENTS:
