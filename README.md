@@ -129,7 +129,7 @@ THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
 BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
 ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 ```
-*Run interested_gene_generation.pl*
+*interested_gene_generation.pl can be run as follows:*
 
 	$ cd Gcluster-master
 	
@@ -174,7 +174,7 @@ ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 
 Once all tests have passed then you are ready to start using the OrthoMCL pipeline.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
-Step 5: Running
+## Usage
 ---------------
 
 You should now be able to run Gcluster with:
@@ -184,7 +184,23 @@ You can now follow the main instructions for how to perform OrthoMCL analyses.
 
 Detailed Usage
 --------------
-
+The brief overview of running the Gcluster is as follows:
+1. Preperation of input data
+* (1) Genbank_file_directory (mandatory option): A Directory containing annotated genomes as Genbank format file. For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+* (2) interested_gene_file (mandatory option): A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
+* (3) phylogenetic_file (optional option): A phylogenetic tree as Newick format, is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript in "Gcluster/script" directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like MEGA (https://www.megasoftware.net/).
+* (4) strain_reorder_file: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
+strain_name|order
+-----------|------------
+Thiomonas_sp._FB-Cd|	1
+Thiomonas_sp._X19|	2
+Thiomonas_delicata_DSM_16361|	3
+Thiomonas_intermedia_ATCC_15466|	4
+Thiomonas_sp._B1|	5
+Thiomonas_sp._ACO7|	6
+Thiomonas_intermedia_K12|	8
+Thiomonas_arsenitoxydans_3As|	7
+Thiomonas_sp._ACO3|	9
 ```Perl
 Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
     REQUIRED ARGUMENTS:
@@ -356,4 +372,3 @@ Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Opt
 		Runs orthmcl with the given input/output/config files.
 		Does not cleanup temporary tables.
 ```
-
