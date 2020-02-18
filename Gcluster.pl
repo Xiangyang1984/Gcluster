@@ -12,9 +12,9 @@ use File::Spec;
 
 ######################################################################################################
 # Please set the absolute path for three programs before using Gcluster 
-my $blastp        = "/miniconda3/bin/blastp";
-my $makeblastdb   = "/miniconda3/bin/makeblastdb";
-my $MCL           = "/miniconda3/bin/mcl";
+my $blastp        = "/usr/bin/blastp";
+my $makeblastdb   = "/usr/bin/makeblastdb";
+my $MCL           = "/usr/bin/mcl";
 
 # set the inflation for MCL
 my $inflation     = 1.5;
