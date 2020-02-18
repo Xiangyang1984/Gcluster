@@ -16,8 +16,8 @@ use File::Spec;
 
 #Please set the absolute path for two programs in "Gcluster/interested_gene_generation.pl", as in the following example:
 
-my $blastp       = "/miniconda3/bin/blastp";
-my $makeblastdb  = "/miniconda3/bin/makeblastdb";
+my $blastp       = "/usr/bin/blastp";
+my $makeblastdb  = "/usr/bin/makeblastdb";
 #########################################################################################################################################
 
 my $usage = <<USAGE; 
