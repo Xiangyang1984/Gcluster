@@ -194,7 +194,9 @@ ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
 ```
 Users can obtained an interested_gene_file using interested_gene_generation.pl:
 
+```perl
 $ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
+```
 
 aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
 ```
