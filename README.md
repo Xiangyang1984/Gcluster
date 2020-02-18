@@ -2,6 +2,7 @@ Gcluster_v2.01
 =================
 
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
+
 	$ git clone https://github.com/xiangyang1984/Gcluster.git
   
 Installing the Gcluster
