@@ -179,7 +179,7 @@ sub color_product {
 
     my $color_rgb_code = shift;
     my $line=0;
-    open (COLOR, $color_rgb_code) or die "Can't read file"; # limit the color number into 256
+    open (COLOR, $color_rgb_code) or die "Can't read file"; # limit the color number into 1488
 
     while(<COLOR>){
         chomp;
@@ -189,7 +189,7 @@ sub color_product {
         
             my @gbR=split (",", $color[1]); 
 
-            $color_hash{$line}=$image->colorAllocate($gbR[0],$gbR[1],$gbR[2]);# limit the color number into 256
+            $color_hash{$line}=$image->colorAllocate($gbR[0],$gbR[1],$gbR[2]);# limit the color number into 1488
         }
 
     }
