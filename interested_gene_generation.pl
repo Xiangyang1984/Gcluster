@@ -126,7 +126,7 @@ my $db_file = File::Spec->rel2abs($options{database});
 my $thread_number = $options{multiple_threads};
 
 my $home_directory = $FindBin::Bin;           # obtaining the home directory where interested_gene_generation.pl located
-print $home_directory,"\n";
+
 #check for interested_gene_generation.pl workplace options
 my $workplace;
 if ( defined( $options{output_directory} ) ) {
