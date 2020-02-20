@@ -781,7 +781,6 @@ sub figure_size_width {
 
 #png string_width
         my @bounds = GD::Image->stringFT($black_tmp, "$font_family:$font_style", $strain_name_font_size, 0, 10, 10, "$filename");
-        print join ("--", @bounds),"\t\ttest-----$filename\n";  #add for test script by xiangyang 2020-02-20
         my $length_tmp =  $bounds[2]-$bounds[0];
         push (@text_name_width_png, $bounds[2]-$bounds[0]);
         $string_height_png{$filename} = $bounds[1]-$bounds[7];
