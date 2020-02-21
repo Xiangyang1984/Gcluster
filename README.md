@@ -167,13 +167,7 @@ A gene of interest file generated looks like:
 ```
 THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
 THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
-CD04_RS0114760	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd	|none_tophit_gene:	CD04_RS0111545#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._FB-Cd
-ACO7_RS14195	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO7
-THI_RS14560	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_arsenitoxydans_3As
-TINT_RS15335	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_K12
-THICB1_RS17665	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._B1
-BVH73_RS01240	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_intermedia_ATCC_15466
-ACO3_RS13930	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._ACO3
+...
 ```
 Users can obtained an interested_gene_file using interested_gene_generation.pl:
 
@@ -209,24 +203,39 @@ A two-column tab-delimited text file is used to sort genomes from up to down acc
 
 Example 1: a simple mode to visualize genome contexts for genomes
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory]
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory
+
 
 Example 2: Using multiple threads to short times
-perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -m 6
+perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -m [multiple_threads]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -m 6```
+
 
 Example 3: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree 16S_rRNA_tree.nwk -o out_directory```
+
 
 Example 4: 100 genes flanking gene of interest are set to show
-perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -srf [strain_reorder_file] -o [Gcluster_output_directory] -n 100
-
-Example 4: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
-perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -sub_TFT T
-
-Example 5: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
-perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map 
+perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -srf [strain_reorder_file] -o [Gcluster_output_directory] -n [flanking_gene_number]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -srf temp_strain_reorder_file -o out_directory -n 100```
 
 
-perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name [options]
+Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
+perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -sub_TFT [start_at_sub_TFT]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
+
+Example 6: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map [start_at_sub_map]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
+
+Example 7: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number]
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
+
+
+
+
 
        -sub_TFT, --start_at_sub_TFT (Default: F)
              Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation.  
@@ -370,7 +379,7 @@ Detailed Usage
              Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation.  
        -map, --start_at_map
              Jump to map generation (Default: F). Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly. It should be noted that there's no sense to reset "flanking_gene_number" parameter if this parameter set to "T".
-             Importantly, at this step, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. In sub_TFT files and all_orthomcl.out file, there are two forms of gene locus tag, (1) "Locus_Tag", in this case, no genename is defined for a gene; (2) "GeneName;Locus_Tag", in this case, genename is given for a gene. For the first form, user can revise gene label by addition of a genename followed by a semicolon in the front of the Locus_Tag. For the second first form, user can revise gene label by modification of the genename.
+             Importantly, at this step, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. In sub_TFT files and all_orthomcl.out file, there are two forms of gene locus tag, (1) "Locus_Tag", in this case, no genename is defined for a gene; (2) "GeneName;Locus_Tag", in this case, genename is given for a gene. For the first form, user can revise gene label by addition of a genename followed by a semicolon in the front of the Locus_Tag. For the second form, user can revise gene label by modification of the genename.
        -h, --help
              Show this message.
 
