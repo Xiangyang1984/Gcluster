@@ -563,6 +563,36 @@ sub blast_filter {
 
 
 ##################################################################################################
+###### Subrounting--genome_number_hgc
+###### Function:
+###### calculate genome number, which are included in a set of homologous gene cluster.
+# ***protein files used for homologous gene analysis must come from Gcluster, or an error may occurs
+##################################################################################################
+sub genome_number_hgc {
+
+    my $each_hgc = shift;
+
+    chomp $each_hgc;
+    $each_hgc =~ s/.*: //g;
+    my @hgc = split (" ", $each_hgc );
+    my @copy_hgc = @hgc;
+    my %de_repeat;
+
+    foreach (@hgc) {
+        $_ =~ s/.*;//g;
+        $_ =~ s/_.*//g;   
+        $de_repeat{$_} = $_;
+    }
+
+    my $genome_number = keys %de_repeat;
+
+    return (\@copy_hgc, $genome_number);
+
+}
+
+
+
+##################################################################################################
 ###### Subrounting--cluster_color_hash
 ###### Function:
 ###### related color value with each set of homologous gene cluster 
@@ -581,21 +611,21 @@ sub cluster_color_hash {
     open (CLUSTER, $cluster_result);
     while (<CLUSTER>){
         chomp;
+        my ($hgc_ref, $genome_number) = genome_number_hgc($_); # to dealwith cluster result from orthoMCL_analysis_out 2019-11-25
+        my @cluster = @$hgc_ref;
+print $genome_number,"\n";
+        my $ture_percent = $genome_number/$total_strain_number*100;
 
-        $_ =~ s/.*,(\d*) taxa\):\t//g;   # to dealwith cluster result from orthoMCL_analysis_out 2019-11-25
-        #print "$1\t";
-        my @cluster;
-        @cluster=split("\t", $_);
-        my $ture_percent = $1/$total_strain_number*100;
-        if ((scalar @cluster > 1) && ($ture_percent >=$percent_strain_homologouscluster_color)) {   #only color homologous gene cluster with gene number >=2
-
+        #only color homologous gene cluster with gene number >=2
+        if ((scalar @cluster > 1) && ($ture_percent >=$percent_strain_homologouscluster_color)) {   
             $value++;
             foreach (@cluster) {
 
+                $_ =~ s/.*\|//g;  # delete "strain name|" for OrthoMCL with mysql
                 $_ =~ s/.*;//g;   # delete the geneName from "geneName;Locus_tag"
                 if (scalar keys %color_hash >= $value) {
-                    $cluster_color_hash_2{$_}=$_;
                     $cluster_color_hash{$_}=$color_hash{$value};
+                    $cluster_color_hash_2{$_}=$_;
                 }
                 
             }
@@ -604,7 +634,7 @@ sub cluster_color_hash {
     }
     close CLUSTER;
 
-    print "\nWarning: Total homologous gene cluster number to color is $value, but only ", scalar keys %color_hash," rgb colors is provided in \"$color_rgb_code\", Please provide enough rgb colors\n" if $value > scalar keys %color_hash;
+    print "\nWarning: a total of $value homologous gene cluster need to be colored, but only ", scalar keys %color_hash," rgb colors are provided in \"$color_rgb_code\", Please provide enough rgb colors\n" if $value > scalar keys %color_hash;
 
     return \%cluster_color_hash, \%cluster_color_hash_2;
 
@@ -640,21 +670,24 @@ sub cluster_GeneName_hash {
  
     while (<CLUSTER>){
         chomp;
-        $_ =~ s/.*:(\t)*//g;   # to dealwith cluster result from orthoMCL_analysis 2019-11-25
 
-        my @cluster=split("\t", $_);
+        $_ =~ s/.*: //g;   # to dealwith cluster result from orthoMCL_analysis 2019-11-25
+        $_ =~ s/.*\|//g;   # delete "strain name|" for OrthoMCL with mysql
+
+        my @cluster=split(" ", $_);
 
         if (scalar @cluster > 1) {   #only color homologous gene cluster with genes number >=2
             my @tmp_array;
             foreach my $first_clycle (@cluster) {
                 push (@tmp_array, $1) if $first_clycle =~ s/(.*);//g;   # delete the GeneName from "GeneName;Locus_Tag" 
-
+                    print "first_clycle: ", $first_clycle, "\n";
             }
 
             my $TFT_genename; # modified genename in sub_TFT file, it is used to relate modified genename in sub_TFT file with homologous gene cluster
 
             if (scalar @tmp_array >0) {# to obtain the modified genename in sub_TFT file, when a set of homologous gene cluster has  genename               
                 foreach my $fst_cycle_0 (@cluster) {
+                    print "first_clycle_0: ", $fst_cycle_0, "\n";
                     $fst_cycle_0 =~ s/.*;//g;   
                     if ( (defined $TFT_GeneName_hash{$fst_cycle_0}) && (!grep {$TFT_GeneName_hash{$fst_cycle_0} eq $_ }@tmp_array) ) {
                    
