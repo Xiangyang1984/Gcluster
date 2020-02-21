@@ -7,8 +7,21 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 ----------------------------------
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
 
-	$ git clone https://github.com/xiangyang1984/Gcluster.git
-### Step 1: Perl Modules Dependencies
+#### Step 1: Download soruce code
+
+Download Gcluster https://github.com/xiangyang1984/Gcluster.git or http://www.microbialgenomic.com/Gcluster_tool.html, from After downloading, uncompress the package and put the Gcluster directory into your PATH.
+	download the Gcluster, and uncompress
+	```
+	$wget http://www.microbialgenomic.com/Gcluster_v1.01-master.tar.gz
+	$tar xf Gcluster-v2.0.1.tar.gz``` 
+	or using git to download:
+	```
+	$ git clone https://github.com/xiangyang1984/Gcluster.git```
+	Put the Gcluster directory into your PATH:
+	```
+	$ export PATH=/path/to/Gcluster/:$PATH```
+
+#### Step 1: Perl Modules Dependencies
 
 The Gcluster requires Perl as well as the following Perl modules.
 
@@ -33,7 +46,7 @@ These can be installed with cpan using:
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-### Step 2: Programs Dependencies
+#### Step 2: Programs Dependencies
 
 Additional software dependencies for the pipeline are as follows:
 
@@ -44,6 +57,12 @@ Additional software dependencies for the pipeline are as follows:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 * *my $MCL           = "/usr/bin/mcl";*
+
+***Please set the absolute path for three programs within "Gcluster/interested_gene_generation.pl", as in the following example:***
+* *my $blastp        = "/usr/bin/blastp";*
+* *my $makeblastdb   = "/usr/bin/makeblastdb";*
+
+#### Step 3: Test dependencies
 
 These software dependencies can be checked and the configuration file created using the **./test.pl** script as below:
 
@@ -74,7 +93,7 @@ These software dependencies can be checked and the configuration file created us
 	################################################################
 	
 
-### Step 3: Testing
+### Step 3: Testing dependencies
 
 Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
 
