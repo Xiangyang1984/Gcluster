@@ -202,48 +202,62 @@ A two-column tab-delimited text file is used to sort genomes from up to down acc
 ##### step 2: Preperation of input data
 
 Example 1: a simple mode to visualize genome contexts for genomes
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory]
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory
+
+```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory```
 
 
 Example 2: Using multiple threads to short times
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -m [multiple_threads]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -m 6```
 
 
 Example 3: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree 16S_rRNA_tree.nwk -o out_directory```
 
 
 Example 4: 100 genes flanking gene of interest are set to show
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -srf [strain_reorder_file] -o [Gcluster_output_directory] -n [flanking_gene_number]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -srf temp_strain_reorder_file -o out_directory -n 100```
 
 
 Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -sub_TFT [start_at_sub_TFT]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
 
 Example 6: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map [start_at_sub_map]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
 
 Example 7: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+
 perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number]
+
 ```$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T```
 
+After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
 
+* adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
 
+* Importantly, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
 
+* using a homologous gene clusters file created by users using current OrthoMCL release which uses a SQL database
+by instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own OrthoMCL output using the current OrthoMCL release which uses a SQL database for homologue grouping, the homologous gene clusters file must renamed with suffixes "out". (e.g. *group.out*)
 
-       -sub_TFT, --start_at_sub_TFT (Default: F)
-             Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation.  
-       -map, --start_at_map
-             Jump to map generation (Default: F). Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly. It should be noted that there's no sense to reset "flanking_gene_number" parameter if this parameter set to "T".
-             Importantly, at this step, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. In sub_TFT files and all_orthomcl.out file, there are two forms of gene locus tag, (1) "Locus_Tag", in this case, no genename is defined for a gene; (2) "GeneName;Locus_Tag", in this case, genename is given for a gene. For the first form, user can revise gene label by addition of a genename followed by a semicolon in the front of the Locus_Tag. For the second first form, user can revise gene label by modification of the genename.
-$ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
-
+ perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number] [Options]
+ 
 	Examples:
 	orthomcl-pipeline -i input/ -o output/ -m orthomcl.config
 		Runs orthomcl using the input fasta files under input/ and orthomcl.confg as config file.
