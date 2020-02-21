@@ -1,23 +1,20 @@
 # Gcluster_v2.0.1
+---
 ## A simple-to-use tool for visualizing and comparing genome contexts for numerous genomes
-
-
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
   
 ## Installation
----
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. There are two ways to install the Gcluster.
 
-**option 1**: We build a bioconda package for Gcluster, users are recommended to install the conda (https://www.anaconda.com), then to install this package with conda run:
+**Option 1**: We build a bioconda package for Gcluster, users are recommended to install the conda (https://www.anaconda.com), then to install this package with conda run:
 
 	$ conda install -c bioconda gcluster
 
 Once installation finished, the absolute paths for mcl, blastp and makeblastdb are auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should now be able to run Gcluster.
 
-**option 2**: Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
+**Option 2**: Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
 
-### Step 1: Download source code
-
+#### Step 1: Download source code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git or http://www.microbialgenomic.com/Gcluster_tool.html. After downloading, uncompress the package and put the Gcluster directory into your PATH.
 
 Using wget to download and uncompress:
@@ -37,8 +34,7 @@ Put the Gcluster directory into your PATH:
 $ export PATH=/path/to/Gcluster/:$PATH
 ```
 
-### Step 2: Perl modules installation
-
+#### Step 2: Perl modules installation
 The Gcluster requires Perl as well as the following Perl modules.
 
 * GD;
@@ -62,8 +58,7 @@ These can be installed with cpan using:
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-### Step 3: Programs installation
-
+#### Step 3: Programs installation
 Additional software dependencies for the pipeline are as follows:
 
 * makeblastdb and blastp in NCBI BLAST+, which is available from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
@@ -78,7 +73,7 @@ Additional software dependencies for the pipeline are as follows:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
-### Step 4: Test the Gcluster with example data
+#### Step 4: Test the Gcluster with example data
 Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/OSX**) successfully or not using the **./test.pl** script as below:
 
 	$ perl ./test.pl
@@ -157,8 +152,6 @@ Once step 1-3 are finished, a small dataset in the **./test_data** directory can
 Once all tests have passed then you are ready to start using the Gcluster.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
 ## Usage
----------------
-
 You should now be able to run Gcluster. The brief overview of running the Gcluster is as follows:
 
 The brief overview of running the Gcluster is as follows:
