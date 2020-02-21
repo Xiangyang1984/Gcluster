@@ -287,7 +287,7 @@ if ( defined($options{phylogenetic_file}) && defined($options{strain_reorder_fil
 }
 
 my $now_time = localtime;
-print "\n$now_time: Gcluster start...\n\n";
+print "\n$now_time: Gcluster.pl start...\n\n";
 
 my $home_directory = $FindBin::Bin;           # obtaining the home directory where Gcluster.pl located
 my $image;
