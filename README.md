@@ -7,7 +7,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 ----------------------------------
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. Installing the Gcluster can be accomplished by downloading the code with the following command and then following the steps below.
 
-#### Step 1: Download soruce code
+### Step 1: Download soruce code
 
 Download Gcluster https://github.com/xiangyang1984/Gcluster.git or http://www.microbialgenomic.com/Gcluster_tool.html, from After downloading, uncompress the package and put the Gcluster directory into your PATH.
 
@@ -28,7 +28,7 @@ Put the Gcluster directory into your PATH:
 $ export PATH=/path/to/Gcluster/:$PATH
 ```
 
-#### Step 2: Perl modules installation
+### Step 2: Perl modules installation
 
 The Gcluster requires Perl as well as the following Perl modules.
 
@@ -53,7 +53,7 @@ These can be installed with cpan using:
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-#### Step 3: Programs installation
+### Step 3: Programs installation
 
 Additional software dependencies for the pipeline are as follows:
 
@@ -69,7 +69,7 @@ Additional software dependencies for the pipeline are as follows:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
-#### Step 4: Test the Gcluster with example data
+### Step 4: Test the Gcluster with example data
 Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/OSX**) successfully or not using the **./test.pl** script as below:
 
 	$ perl ./test.pl
@@ -153,11 +153,11 @@ Once all tests have passed then you are ready to start using the Gcluster.  If y
 You should now be able to run Gcluster. The brief overview of running the Gcluster is as follows:
 
 The brief overview of running the Gcluster is as follows:
-##### step 1: Preperation of input data
-###### Genbank_file_directory (mandatory option)
+### step 1: Preperation of input data
+#### Genbank_file_directory (mandatory option)
 Genbank_file_directory : A Directory containing annotated genomes as Genbank format file. For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
 
-###### interested_gene_file (mandatory option)
+#### interested_gene_file (mandatory option)
 interested_gene_file: A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
 
 *Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
@@ -181,9 +181,9 @@ $ cat test_data/aioB.fasta
 >YO5_RS17935
 MSQFKDRVPLPPIDAQKTNMACHFCIVGCGYHVYKWPANKEGGRAPEQNALNVDFTRQVPPMQITMTPAMVNRIKDNDGSEHNIMIIPDKECEVNKGLSSTRGGQMASIMYSENTPIGERRLKVPMLYTGDDWIETTWQQSMDIYAGLTKRILDEDGPEQILFNLFDHGGAGGGFENTWATGKLIFSGIGTPMVRIHNRPAYNSECHATRDMGVGELNNSYEDAELADVLISIGNNPYESQTNYFLAHWVPNLQGATTGKKKERYPGESFAKAKIIFVDPRRTISVDISETVAGKDHVLHLAINPGTDTALFNGLLTYVVEKGWQDDEFIQNHTTGFDDTLASNKLSLSECSVITGITEDDLRKAAEWAYQPKESGHAPRTMHAYEKGVIWGNDNYRIQSSIVNLVLATHNVGRRGTGVVRMGGHQEGYVRPPYPGGRPAPYIDQEIIKNNGMMLTVWACNAFQTTVNAETYREAVKRRANIVNQALAKARGASTEQLINIIYDAVKNQGGLYLVDIDLYRTKFADSSHMLLPAAHPGEMNLTSMNGERRLRLSERFMDPPGIAKADCMIAADMANALKRLYEGEGNTEMAQRFSGFDWQSEEDSFNDGFRMAHEKEIDSQGGPTGHLATYERLRAAGTNGVQLPIKEYRDGKLIGTEILYSDNTFDTDDGKAHFQPSPWNGFPAVIEAQQKNHAFWINNGRTNHIWQSAYHDQHLSFRKGRFPMAPLEINPEDAAQLGIAAGDIVEIYNDYGATYAMAYPEPDIKRGQVFMMFGYPNGVQGDTVSEWTDRNVIPYYKGAWADIRKVGENEAYKHSVSFKRRRYS
 ```
-##### phylogenetic_file (optional option) 
+#### phylogenetic_file (optional option) 
 A phylogenetic tree as Newick format, is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript in "Gcluster/script" directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like MEGA (https://www.megasoftware.net/).
-##### strain_reorder_file (optional option)
+#### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
 >>A example of the strain_reorder_file like:
@@ -199,53 +199,57 @@ A two-column tab-delimited text file is used to sort genomes from up to down acc
 >>|Thiomonas\_arsenitoxydans_3As| 7|
 >>|Thiomonas\_sp.\_ACO3| 9|
 
-##### step 2: Preperation of input data
+### step 2: Running Gcluster.pl
 
-Example 1: a simple mode to visualize genome contexts for genomes
+```
+
+#### Example 1: a simple mode to visualize genome contexts for genomes
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory
 
 
-Example 2: Using multiple threads to short times
+#### Example 2: Using multiple threads to short times
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -m [multiple_threads]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -m 6
 
 
-Example 3: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
+#### Example 3: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree 16S_rRNA_tree.nwk -o out_directory
 
 
-Example 4: 100 genes flanking gene of interest are set to show
+#### Example 4: 100 genes flanking gene of interest are set to show
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -srf [strain_reorder_file] -o [Gcluster_output_directory] -n [flanking_gene_number]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -srf temp_strain_reorder_file -o out_directory -n 100
 
 
-Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
+#### Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -sub_TFT [start_at_sub_TFT]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
 
-Example 6: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+#### Example 6: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map [start_at_sub_map]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
 
-Example 7: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+#### Example 7: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
+
+```
 
 After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
 
