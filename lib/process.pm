@@ -613,7 +613,6 @@ sub cluster_color_hash {
         chomp;
         my ($hgc_ref, $genome_number) = genome_number_hgc($_); # to dealwith cluster result from orthoMCL_analysis_out 2019-11-25
         my @cluster = @$hgc_ref;
-print $genome_number,"\n";
         my $ture_percent = $genome_number/$total_strain_number*100;
 
         #only color homologous gene cluster with gene number >=2
@@ -680,14 +679,12 @@ sub cluster_GeneName_hash {
             my @tmp_array;
             foreach my $first_clycle (@cluster) {
                 push (@tmp_array, $1) if $first_clycle =~ s/(.*);//g;   # delete the GeneName from "GeneName;Locus_Tag" 
-                    print "first_clycle: ", $first_clycle, "\n";
             }
 
             my $TFT_genename; # modified genename in sub_TFT file, it is used to relate modified genename in sub_TFT file with homologous gene cluster
 
             if (scalar @tmp_array >0) {# to obtain the modified genename in sub_TFT file, when a set of homologous gene cluster has  genename               
                 foreach my $fst_cycle_0 (@cluster) {
-                    print "first_clycle_0: ", $fst_cycle_0, "\n";
                     $fst_cycle_0 =~ s/.*;//g;   
                     if ( (defined $TFT_GeneName_hash{$fst_cycle_0}) && (!grep {$TFT_GeneName_hash{$fst_cycle_0} eq $_ }@tmp_array) ) {
                    
