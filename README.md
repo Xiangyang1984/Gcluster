@@ -186,18 +186,18 @@ A phylogenetic tree as Newick format, is used by Gcluster to automatically accoc
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
-	A example of the strain_reorder_file like:
-	|strain\_name | order|
-	|- | -|
-	|Thiomonas_sp.\_FB-Cd| 1|
-	|Thiomonas\_sp.\_X19| 2|
-	|Thiomonas\_delicata\_DSM\_16361| 3|
-	|Thiomonas\_intermedia_ATCC_15466| 4|
-	|Thiomonas\_sp.\_B1| 5|
-	|Thiomonas\_sp.\_ACO7| 6|
-	|Thiomonas\_intermedia\_K12| 8|
-	|Thiomonas\_arsenitoxydans_3As| 7|
-	|Thiomonas\_sp.\_ACO3| 9|
+A example of the strain_reorder_file like:
+|strain\_name | order|
+|- | -|
+|Thiomonas_sp.\_FB-Cd| 1|
+|Thiomonas\_sp.\_X19| 2|
+|Thiomonas\_delicata\_DSM\_16361| 3|
+|Thiomonas\_intermedia_ATCC_15466| 4|
+|Thiomonas\_sp.\_B1| 5|
+|Thiomonas\_sp.\_ACO7| 6|
+|Thiomonas\_intermedia\_K12| 8|
+|Thiomonas\_arsenitoxydans_3As| 7|
+|Thiomonas\_sp.\_ACO3| 9|
 
 ### step 2: Running Gcluster.pl
 
