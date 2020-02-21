@@ -276,7 +276,7 @@ if ( !( defined( $options{interested_gene_file} ) ) ) {
     exit(2);
 }
 
-#check for required options
+#check for coexisting options
 if ( defined($options{phylogenetic_file}) && defined($options{strain_reorder_file}) ) {
     print "Warning: Gcluster needs a --strain_reorder_file-- or a --phylogenetic_file--, but not both at the same time.\n";
     exit(3);
