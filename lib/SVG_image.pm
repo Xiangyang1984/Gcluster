@@ -135,7 +135,7 @@ sub create_image_SVG {
                         my $Y_parameter=$options{up_shift}+$options{distance_between_two_genomes}*$eachfile;    # strart Y 
                         my $tbl_part_infile = "$directory_part_TFT/$tbl_part_file" or die "Must supply input filename\n";
                  
-                        draw_map_SVG ($tbl_part_infile, $Y_parameter, $tree_width, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label}););
+                        draw_map_SVG ($tbl_part_infile, $Y_parameter, $tree_width, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label});
 
                     }
 
@@ -156,7 +156,7 @@ sub create_image_SVG {
         
             my $tbl_part_infile = "$directory_part_TFT/$tbl_part_file" or die "Must supply input filename\n";
                 
-            draw_map_SVG ($tbl_part_infile, $Y_parameter, $options{left_shift}, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label}););
+            draw_map_SVG ($tbl_part_infile, $Y_parameter, $options{left_shift}, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label});
     
         }
     }
