@@ -11,12 +11,12 @@ Gcluster is a perl script which doesn't need compilation. But before running, Gc
 
 Download Gcluster https://github.com/xiangyang1984/Gcluster.git or http://www.microbialgenomic.com/Gcluster_tool.html, from After downloading, uncompress the package and put the Gcluster directory into your PATH.
 
-download the Gcluster, and uncompress
+Download the Gcluster, and uncompress:
 ```
 $wget http://www.microbialgenomic.com/Gcluster_v1.01-master.tar.gz
 $tar xf Gcluster-v2.0.1.tar.gz
 ``` 
-or using git to download:
+Or using git to download:
 	
 ```
 $ git clone https://github.com/xiangyang1984/Gcluster.git
@@ -28,7 +28,7 @@ Put the Gcluster directory into your PATH:
 $ export PATH=/path/to/Gcluster/:$PATH
 ```
 
-#### Step 1: Perl Modules Dependencies
+#### Step 2: Perl modules installation
 
 The Gcluster requires Perl as well as the following Perl modules.
 
@@ -53,7 +53,7 @@ These can be installed with cpan using:
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
 
-#### Step 2: Programs Dependencies
+#### Step 3: Programs installation
 
 Additional software dependencies for the pipeline are as follows:
 
@@ -69,49 +69,15 @@ Additional software dependencies for the pipeline are as follows:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
-#### Step 3: Test dependencies
-
-These software dependencies can be checked and the configuration file created using the **./test.pl** script as below:
+#### Step 4: Test the Gcluster with example data
+Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/OSX**) successfully or not using the **./test.pl** script as below:
 
 	$ perl ./test.pl
-	Test-step1: Checks for Gcluster dependencies...
-	################################################################
-	***GD Version	 2.71	ok.
-	***GD::SVG Version	 0.33	ok.
-	***SVG Version	 2.84	ok.
-	***threads Version	 2.15	ok.
-	***File::Basename Version	 2.85	ok.
-	***FindBin Version	 1.51	ok.
-	***lib Version	 0.63	ok.
-	***Getopt::Long Version	 2.49	ok.
-	***Math::BigFloat Version	 1.999806	ok.
-	***Storable Version	 3.15	ok.
-	***vars Version	 1.03	ok.
-	***File::Spec Version	 3.75	ok.
-	***Bio::SeqIO Version	 1.007002	ok.
-	***Bio::Tree::NodeI Version	 	ok.
-	***Bio::TreeIO Version	 1.007002	ok.
-	!!!Ok, all dependencies Perl modulers are installed*
-
-	----------------------------------------------------------------
-	Checking for makeblastdb ... OK, makeblastdb is installed at: /miniconda3/bin/makeblastdb
-	Checking for blastp ... OK, blastp is installed at: /miniconda3/bin/blastp
-	Checking for mcl ... OK, mcl is installed at: /miniconda3/bin/mcl
-	################################################################
 	
-
-### Step 3: Testing dependencies
-
-Once the Installation of required Perl modules and programs for Gcluster are finished, Gcluster can be run as follows:
-
-	$ cd Gcluster-master
-	
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -m 9
-	
-	Test-step2: Begin test Gcluster.pl...
+	Test-step1: Begin test Gcluster.pl...
 	################################################################
 
-	Tue Feb 18 13:16:12 2020: Gcluster start...
+	Tue Feb 18 13:16:12 2020: Gcluster.pl start...
 
 	GenBank_extraction_percent: 11...22...33...44...55...66...77...88...100...done
 	Step 1-1: Extract all predicted proteomic sequences of each genebank file in folder, and transformat protein sequence into a ID-sequence hash
@@ -140,13 +106,9 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	################################################################
 	Ok, Gcluster.pl works success!
 
-*interested_gene_generation.pl can be run as follows:*
 
-	$ cd Gcluster-master
 	
-	$ perl ./interested_gene_generation.pl -dir ./test_data/gbk -db ./test_data/aioB.fasta -m 9
-	
-	Test-step3: Begin test interested_gene_generation.pl...
+	Test-step2: Begin test interested_gene_generation.pl...
 	################################################################
 
 	Tue Feb 18 13:16:27 2020: interested_gene_generation.pl start...
@@ -183,7 +145,7 @@ Once the Installation of required Perl modules and programs for Gcluster are fin
 	################################################################
 	Ok, interested_gene_generation.pl works success!
 
-Once all tests have passed then you are ready to start using the OrthoMCL pipeline.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
+Once all tests have passed then you are ready to start using the Gcluster.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
 ## Usage
 ---------------
