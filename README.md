@@ -1,10 +1,10 @@
 # Gcluster_v2.0.1
----
+***
 ## A simple-to-use tool for visualizing and comparing genome contexts for numerous genomes
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
   
 ## Installation
----
+***
 Gcluster is a perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl need to be set. There are two ways to install the Gcluster.
 
 ### **Option 1**: We build a bioconda package for Gcluster, users are recommended to install the conda (https://www.anaconda.com), then to install this package with conda run:
@@ -150,7 +150,7 @@ Once step 1-3 are finished, a small dataset in the **./test_data** directory can
 Once all tests have passed then you are ready to start using the Gcluster.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
 
 ## Usage
----
+***
 You should now be able to run Gcluster. The brief overview of running the Gcluster is as follows:
 
 The brief overview of running the Gcluster is as follows:
