@@ -111,6 +111,17 @@ if (defined $options{help}) {
     exit(0);
 }
 
+#check for required options
+if ( !( defined( $options{genbank_file_directory} ) ) ) {
+    print $usage;
+    exit(1);
+}
+
+#check for required options
+if ( !( defined( $options{database} ) ) ) {
+    print $usage;
+    exit(2);
+}
 
 my $now_time = localtime;
 print "\n$now_time: interested_gene_generation.pl start...\n\n";
