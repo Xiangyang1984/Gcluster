@@ -138,7 +138,7 @@ sub create_image_PNG {
                     my $Y_parameter=$options{up_shift}+$options{distance_between_two_genomes}*$eachfile;    # strart Y 
                     my $tbl_part_infile = "$directory_part_TFT/$tbl_part_file" or die "Must supply input filename\n";
         
-                    draw_map_PNG ($home_directory, $tbl_part_infile, $Y_parameter, $tree_width, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label});
+                    draw_map_PNG ($home_directory, $tbl_part_infile, $Y_parameter, $tree_width, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label});
 
                 }
 
@@ -158,7 +158,7 @@ sub create_image_PNG {
         my $Y_parameter=$options{up_shift}+$options{distance_between_two_genomes}*$eachfile;     # left_shift
         my $tbl_part_infile = "$directory_part_TFT/$tbl_part_file" or die "Must supply input filename\n";
         
-            draw_map_PNG ($home_directory, $tbl_part_infile, $Y_parameter, $options{left_shift}, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label});
+            draw_map_PNG ($home_directory, $tbl_part_infile, $Y_parameter, $options{left_shift}, $options{arrow_relative_Length}, $options{arrow_relative_Height}, $options{strain_name_shift_Y},$options{gene_label_shift_Y}, $options{font_family}, $options{font_style}, $options{label_font_size}, $options{label_font_color}, $options{interested_gene_label_font_color}, $options{cds_color_border}, $options{pseudo_color_border}, $options{RNA_color_border}, $options{gene_no_color_filled}, $options{figure_Scale_up_multiple}, $options{rotate_gene_label}, $options{strain_name_font_size}, $options{strain_name_font_color}, $options{show_label}, $options{unification_label});
 
         }
 
@@ -254,6 +254,7 @@ sub draw_map_PNG {
     my $strain_name_font_size = shift;
     my $strain_name_font_color = shift;
     my $show_label = shift;
+    my $unification_label = shift;
 
     my $filename = basename $inputfile;
     my $filename_shift = basename $inputfile; 
@@ -285,12 +286,14 @@ sub draw_map_PNG {
         my $tag;
         if ($cds[3] =~ /;/) {
             my @geneName_array = split ";", $cds[3];
-            $geneName_change_hash{$geneName_array[1]} = $cluster_GeneName_hash{$geneName_array[1]} if (defined $cluster_GeneName_hash{$geneName_array[1]}); #uniform gene name for homologs
-            $geneName_change_hash{$geneName_array[1]} = $geneName_array[0] if (!defined $cluster_GeneName_hash{$geneName_array[1]});
+            $geneName_change_hash{$geneName_array[1]} = $geneName_array[0];
+            $geneName_change_hash{$geneName_array[1]} = $cluster_GeneName_hash{$geneName_array[1]} if ( (defined $cluster_GeneName_hash{$geneName_array[1]}) && ($unification_label eq "T") ); #uniform gene name for homologs
+            #$geneName_change_hash{$geneName_array[1]} = $geneName_array[0] if (!defined $cluster_GeneName_hash{$geneName_array[1]});
             $tag = $geneName_array[1]; 
         }else {
-            $geneName_change_hash{$cds[3]} = $cluster_GeneName_hash{$cds[3]} if (defined $cluster_GeneName_hash{$cds[3]}); #uniform gene name for homologs            
-            $geneName_change_hash{$cds[3]} = $cds[3] if (!defined $cluster_GeneName_hash{$cds[3]});
+            $geneName_change_hash{$cds[3]} = $cds[3];
+            $geneName_change_hash{$cds[3]} = $cluster_GeneName_hash{$cds[3]} if ( (defined $cluster_GeneName_hash{$cds[3]}) && ($unification_label eq "T") ); #uniform gene name for homologs            
+            #$geneName_change_hash{$cds[3]} = $cds[3] if (!defined $cluster_GeneName_hash{$cds[3]});
             $tag = $cds[3];
         }
 
