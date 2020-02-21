@@ -12,21 +12,21 @@ Gcluster is a perl script which doesn't need compilation. But before running, Gc
 Download Gcluster https://github.com/xiangyang1984/Gcluster.git or http://www.microbialgenomic.com/Gcluster_tool.html, from After downloading, uncompress the package and put the Gcluster directory into your PATH.
 
 download the Gcluster, and uncompress
-	```
-	$wget http://www.microbialgenomic.com/Gcluster_v1.01-master.tar.gz
-	$tar xf Gcluster-v2.0.1.tar.gz
-	``` 
+```
+$wget http://www.microbialgenomic.com/Gcluster_v1.01-master.tar.gz
+$tar xf Gcluster-v2.0.1.tar.gz
+``` 
 or using git to download:
 	
-	```
-	$ git clone https://github.com/xiangyang1984/Gcluster.git
-	```
+```
+$ git clone https://github.com/xiangyang1984/Gcluster.git
+```
 	
 Put the Gcluster directory into your PATH:
 	
-	```
-	$ export PATH=/path/to/Gcluster/:$PATH
-	```
+```
+$ export PATH=/path/to/Gcluster/:$PATH
+```
 
 #### Step 1: Perl Modules Dependencies
 
