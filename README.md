@@ -148,11 +148,11 @@ The brief overview of running the Gcluster is as follows:
 
 [Preperation of input data](#preperation-of-input-data)
 
-[Running Gcluster.pl](#running-gcluster\.pl)
+[Running Gcluster](#running-gcluster)
 
 [Running Gcluster.pl](#running-gcluster.pl)
 
-[Running Gcluster.pl](#running-Gcluster\.pl)
+[Running Gcluster](#running-Gcluster)
 
 
 [Customization of the figure](#customization-of-the-figure)
@@ -207,8 +207,8 @@ A example of the strain_reorder_file looks like:
 |Thiomonas_arsenitoxydans\_3As| 7|
 |Thiomonas_sp.\_ACO3| 9|
 
-### step 2: Running Gcluster.pl
-### Running Gcluster.pl
+### step 2: Running Gcluster
+### Running Gcluster
 
 #### Example 1: a simple mode to visualize genome contexts for genomes
 
