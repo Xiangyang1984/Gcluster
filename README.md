@@ -63,17 +63,17 @@ Additional software dependencies for the pipeline are as follows:
 * makeblastdb and blastp in NCBI BLAST+, which is available from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
 * mcl (Markov Clustering algorithm), is available at http://micans.org/mcl/
 
-***Please set the absolute path for three programs within "Gcluster/Gcluster.pl", as in the following example:***
+***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:***
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 * *my $MCL           = "/usr/bin/mcl";*
 
-***Please set the absolute path for three programs within "Gcluster/interested_gene_generation.pl", as in the following example:***
+***Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:***
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
 #### Step 4: Test the Gcluster with example data
-Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/OSX**) successfully or not using the **./test.pl** script as below:
+Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **./test.pl** script as below:
 
 	$ perl ./test.pl
 	
@@ -147,16 +147,15 @@ Once step 1-3 are finished, a small dataset in the **./test_data** directory can
 	################################################################
 	Ok, interested_gene_generation.pl works success!
 
-Once all tests have passed then you are ready to start using the Gcluster.  If you wish to test the grid scheduler mode of the pipeline please change **-s fork** to **-s sge** and re-run the tests.
+Once all tests have passed then you are ready to start using the Gcluster.  
 
 ## Usage
 ***
-You should now be able to run Gcluster. The brief overview of running the Gcluster is as follows:
-
 The brief overview of running the Gcluster is as follows:
+
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A Directory containing annotated genomes as Genbank format file. For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [./test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
 
 #### interested_gene_file (mandatory option)
 interested_gene_file: A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
