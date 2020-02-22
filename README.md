@@ -8,6 +8,7 @@ Gcluster is a perl script which doesn't need compilation. But before running, Gc
 
 ### **Option 1**: Installing the Gcluster via conda
 We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with conda run:
+
 	$ conda install -c bioconda gcluster
 
 Once installation finished, the absolute paths for mcl, blastp and makeblastdb are auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should now be able to run Gcluster.
@@ -16,8 +17,7 @@ Once installation finished, the absolute paths for mcl, blastp and makeblastdb a
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git，Installation Gcluster can be accomplished by downloading the code and then following the steps below.
 #### Step 1: Download source code
 Download Gcluster，and put the Gcluster directory into your PATH with the following command：
-	
-```
+```	
 $ git clone https://github.com/xiangyang1984/Gcluster.git
 $ export PATH=/path/to/Gcluster/:$PATH
 ```
@@ -33,7 +33,7 @@ These can be installed with cpan using:
 #### Step 3: Programs installation
 Additional software dependencies for the pipeline are as follows:
 
-* makeblastdb and blastp, both come from NCBI BLAST+, which is available ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/.
+* makeblastdb and blastp, both come from NCBI BLAST+, available at ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
 * mcl (Markov Clustering algorithm), is available at http://micans.org/mcl/
 
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:***
