@@ -263,33 +263,8 @@ by instead of "all_orthomcl.out" created by Gcluster, users can supply homologou
 
  perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number] [Options]
  
-	Examples:
-	orthomcl-pipeline -i input/ -o output/ -m orthomcl.config
-		Runs orthomcl using the input fasta files under input/ and orthomcl.confg as config file.
-		Places data in output/.  Gets other parameters (blast, etc) from default config file.
 
-	orthomcl-pipeline -i input/ -o output/ -m orthomcl.config -c orthomcl-pipeline.conf
-		Runs orthomcl using the given input/output directories.  Overrides parameters (blast, etc)
-		from file orthomcl-pipeline.conf.
-
-	orthomcl-pipeline --print-config
-		Prints default orthomcl-pipeline.conf config file (which can then be changed).
-
-	orthomcl-pipeline --print-orthomcl-config
-		Prints orthomcl example config file which must be changed to properly run.
-
-	orthomcl-pipeline -i input/ -o output/ -m orthomcl.confg --compliant
-		Runs orthmcl with the given input/output/config files.
-		Skips the orthomclAdjustFasta stage on input files.
-
-	orthomcl-pipeline -i input/ -o output/ -m orthomcl.confg --no-cleanup
-		Runs orthmcl with the given input/output/config files.
-		Does not cleanup temporary tables.
-
-```Perl
-Usage: orthomcl-pipeline -i [input dir] -o [output dir] -m [orthmcl config] [Options]
-
-
+``` perl
 Detailed Usage
 --------------
     REQUIRED ARGUMENTS:
@@ -401,6 +376,5 @@ Detailed Usage
              Importantly, at this step, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. In sub_TFT files and all_orthomcl.out file, there are two forms of gene locus tag, (1) "Locus_Tag", in this case, no genename is defined for a gene; (2) "GeneName;Locus_Tag", in this case, genename is given for a gene. For the first form, user can revise gene label by addition of a genename followed by a semicolon in the front of the Locus_Tag. For the second form, user can revise gene label by modification of the genename.
        -h, --help
              Show this message.
-
 
 ```
