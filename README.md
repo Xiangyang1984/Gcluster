@@ -4,7 +4,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
   
 ## Installation
 ***
-Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs in Gcluster.pl and interested_gene_generation.pl need to be set. There are two ways to install the Gcluster.
+Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
 ### **Option 1**: Installing the Gcluster via conda
 We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with conda run:
@@ -39,16 +39,16 @@ Both of them come from NCBI BLAST+, available at ftp://ftp.ncbi.nlm.nih.gov/blas
 * mcl (Markov Clustering algorithm)  
 This software is available at http://micans.org/mcl/
 
-*Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
+***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 * *my $MCL           = "/usr/bin/mcl";*
 
-*Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:
+***Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:
 * *my $blastp        = "/usr/bin/blastp";*
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
-#### Step 4: Test the Gcluster with example data
+### Test the Gcluster with example data
 Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **./test.pl** script as below:
 
 	$ perl ./test.pl
