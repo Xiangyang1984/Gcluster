@@ -34,11 +34,11 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
 ### **Option-1** Installing the Gcluster via Conda
-We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
+We have build a bioconda package for Gcluster. Users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
 
 	$ conda install -c bioconda gcluster
 
-Once installation finished, the absolute paths for mcl, blastp and makeblastdb are auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should now be able to run Gcluster.
+Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should be able to run Gcluster.
 
 ### **Option-2** Installing the Gcluster from Source Code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
@@ -52,7 +52,7 @@ $ export PATH=/path/to/Gcluster/:$PATH
 #### Step 2: Perl modules installation
 The Gcluster requires Perl as well as Perl modules including GD; GD::SVG, SVG; threads, File::Basename, FindBin, File::Spec, lib, Getopt::Long, Math::BigFloat, Storable, vars, Bio::SeqIO, Bio::Tree::NodeI, Bio::TreeIO.
 
-These can be installed with cpan using:
+These modules can be installed with cpan using:
 
 	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
 
@@ -66,28 +66,20 @@ Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/bl
 * mcl (Markov Clustering algorithm)  
 This software is available at http://micans.org/mcl/
 
-<font color=blue>hhhhhhhhhhhh</font>
-
-<font color=#00ffff>
-	
-hhhhhhhhhhhhhhhhhhhhh
-
-</font>
-
 
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
 
-	* *my $blastp        = "/usr/bin/blastp";*
-	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
-	* *my $MCL           = "/usr/bin/mcl";*
+	my $blastp        = "/usr/bin/blastp";
+	my $makeblastdb   = "/usr/bin/makeblastdb";
+	my $MCL           = "/usr/bin/mcl";
 
 ***Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:
 
-	* *my $blastp        = "/usr/bin/blastp";*
-	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
+	my $blastp        = "/usr/bin/blastp";
+	my $makeblastdb   = "/usr/bin/makeblastdb";
 
 ### Test the Gcluster with Example Data
-Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **test.pl** script as below:
+Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOS**) successfully or not using the **test.pl** script as below:
 
 	$ perl ./test.pl
 	
