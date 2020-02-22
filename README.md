@@ -11,21 +11,20 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 
 * [Installation](#installation)
-###
+
  	* [Installing the Gcluster via conda](#Option-1-installing-the-gcluster-via-conda)
-        ---
+	
  	* [Installing the Gcluster from source code](#Option-2-installing-the-gcluster-from-source-code)
-        ---
+	
  	* [Test the Gcluster with example data](#test-the-gcluster-with-example-data)
-        ---
+	
  * [Usage](#usage)
-###
+ 
  	* [Preperation of input data](#preperation-of-input-data)
-	---
+	
  	* [Running Gcluster](#running-gcluster)
-	---
+	
 	* [Customization of the figure](#customization-of-the-figure)
-	---
 
 
 
