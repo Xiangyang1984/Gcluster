@@ -155,7 +155,7 @@ The brief overview of running the Gcluster is as follows:
 
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
 #### interested_gene_file (mandatory option)
 interested_gene_file: A list of the interested gene, in which each row contains a locus tag of the interested gene for individual genome. 
@@ -184,7 +184,7 @@ $ cat test_data/aioB.fasta
 MSQFKDRVPLPPIDAQKTNMACHFCIVGCGYHVYKWPANKEGGRAPEQNALNVDFTRQVPPMQITMTPAMVNRIKDNDGSEHNIMIIPDKECEVNKGLSSTRGGQMASIMYSENTPIGERRLKVPMLYTGDDWIETTWQQSMDIYAGLTKRILDEDGPEQILFNLFDHGGAGGGFENTWATGKLIFSGIGTPMVRIHNRPAYNSECHATRDMGVGELNNSYEDAELADVLISIGNNPYESQTNYFLAHWVPNLQGATTGKKKERYPGESFAKAKIIFVDPRRTISVDISETVAGKDHVLHLAINPGTDTALFNGLLTYVVEKGWQDDEFIQNHTTGFDDTLASNKLSLSECSVITGITEDDLRKAAEWAYQPKESGHAPRTMHAYEKGVIWGNDNYRIQSSIVNLVLATHNVGRRGTGVVRMGGHQEGYVRPPYPGGRPAPYIDQEIIKNNGMMLTVWACNAFQTTVNAETYREAVKRRANIVNQALAKARGASTEQLINIIYDAVKNQGGLYLVDIDLYRTKFADSSHMLLPAAHPGEMNLTSMNGERRLRLSERFMDPPGIAKADCMIAADMANALKRLYEGEGNTEMAQRFSGFDWQSEEDSFNDGFRMAHEKEIDSQGGPTGHLATYERLRAAGTNGVQLPIKEYRDGKLIGTEILYSDNTFDTDDGKAHFQPSPWNGFPAVIEAQQKNHAFWINNGRTNHIWQSAYHDQHLSFRKGRFPMAPLEINPEDAAQLGIAAGDIVEIYNDYGATYAMAYPEPDIKRGQVFMMFGYPNGVQGDTVSEWTDRNVIPYYKGAWADIRKVGENEAYKHSVSFKRRRYS
 ```
 #### phylogenetic_file (optional option) 
-A phylogenetic tree as Newick format, is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript in "Gcluster/script" directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like MEGA (https://www.megasoftware.net/).
+A Newick format phylogenetic tree is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) directory for batch extraction of 16S rRNA gene sequences, which can be used to build a 16S rRNA tree using software like [MEGA](https://www.megasoftware.net/) .
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
@@ -192,14 +192,14 @@ A example of the strain_reorder_file like:
 |strain\_name | order|
 |- | -|
 |Thiomonas_sp.\_FB-Cd| 1|
-|Thiomonas\_sp.\_X19| 2|
-|Thiomonas\_delicata\_DSM\_16361| 3|
-|Thiomonas\_intermedia_ATCC_15466| 4|
-|Thiomonas\_sp.\_B1| 5|
-|Thiomonas\_sp.\_ACO7| 6|
-|Thiomonas\_intermedia\_K12| 8|
-|Thiomonas\_arsenitoxydans_3As| 7|
-|Thiomonas\_sp.\_ACO3| 9|
+|Thiomonas_sp.\_X19| 2|
+|Thiomonas_delicata_DSM\_16361| 3|
+|Thiomonas_intermedia_ATCC_15466| 4|
+|Thiomonas_sp.\_B1| 5|
+|Thiomonas_sp.\_ACO7| 6|
+|Thiomonas_intermedia\_K12| 8|
+|Thiomonas_arsenitoxydans\_3As| 7|
+|Thiomonas_sp.\_ACO3| 9|
 
 ### step 2: Running Gcluster.pl
 
