@@ -157,7 +157,7 @@ The Warning happens because the user database has less than 5 sequences in it. O
 
 ## Usage
 ***
-It is very simple to use Gcluster. First, you should prepare input data (Genbank_file_directory, and a list of gene of interest); then, users could run Gcluster like this; finally, after a figure created, it can be modified by adjusting the parameters (refer to [Detailed Explanations for Arguments](detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. The brief overview of running the Gcluster is as follows:
+It is very simple to use Gcluster. First, you should prepare input data (Genbank_file_directory, and a list of gene of interest); then, users could run Gcluster like this; finally, after a figure created, it can be modified by adjusting the parameters (refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. The brief overview of running the Gcluster is as follows:
 
 ### Preparation of Input Data
 
