@@ -38,7 +38,7 @@ We have build a bioconda package for Gcluster. Users are recommended to install 
 
 	$ conda install -c bioconda gcluster
 
-Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should be able to run Gcluster.
+Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so users should be able to run Gcluster.
 
 ### **Option-2** Installing the Gcluster from Source Code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
