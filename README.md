@@ -66,9 +66,13 @@ Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/bl
 * mcl (Markov Clustering algorithm)  
 This software is available at http://micans.org/mcl/
 
-<font color=blue size=72>color=gray</font>
+<font color=blue>hhhhhhhhhhhh</font>
 
-<font color=#00ffff size=72>color=#00ffff</font>
+<font color=#00ffff>
+	
+hhhhhhhhhhhhhhhhhhhhh
+
+</font>
 
 
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
