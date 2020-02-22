@@ -4,11 +4,6 @@
 ***
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
 
-[Installation](#installation）
-
-[Usage](#readme）
-
-[Usage](#Usage）
 
 [Installation](#installation)
 
@@ -146,9 +141,8 @@ The Warning happens because the user database has less than 5 sequences in it. O
 ## Usage
 ***
 The brief overview of running the Gcluster is as follows:
-[Installation](#installation）
 
-[Preperation of input data](#preperation-of-input-data）
+[Preperation of input data](#preperation of input data）
 
 [Running Gcluster.pl](#running-gcluster.pl）
 
