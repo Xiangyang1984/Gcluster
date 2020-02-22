@@ -42,13 +42,13 @@ Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/bl
 This software is available at http://micans.org/mcl/
 
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
-* *my $blastp        = "/usr/bin/blastp";*
-* *my $makeblastdb   = "/usr/bin/makeblastdb";*
-* *my $MCL           = "/usr/bin/mcl";*
+	* *my $blastp        = "/usr/bin/blastp";*
+	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
+	* *my $MCL           = "/usr/bin/mcl";*
 
 ***Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:
-* *my $blastp        = "/usr/bin/blastp";*
-* *my $makeblastdb   = "/usr/bin/makeblastdb";*
+	* *my $blastp        = "/usr/bin/blastp";*
+	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
 ### Test the Gcluster with example data
 Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **test.pl** script as below:
