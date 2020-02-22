@@ -1,4 +1,5 @@
-<div align = right>![](https://github.com/Xiangyang1984/gcluster_tool-an-old-version/blob/master/test_data/figure_160_final.png)
+ <div align = right> 
+![](https://github.com/Xiangyang1984/gcluster_tool-an-old-version/blob/master/test_data/figure_160_final.png)</div>
 
 # Gcluster_v2.0.1
 ***
@@ -14,7 +15,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
  	* [Test the Gcluster with example data](#test-the-gcluster-with-example-data)
         -
  * [Usage](#usage)
-
+-
  	* [Preperation of input data](#preperation-of-input-data)
 
  	* [Running Gcluster](#running-gcluster)
