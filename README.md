@@ -158,14 +158,16 @@ The brief overview of running the Gcluster is as follows:
 Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
 
 #### interested_gene_file (mandatory option)
-interested_gene_file: A list of the interested gene , in which each line contains a locus tag of the interested gene for individual genome. 
+interested_gene_file: A list of the interested gene, in which each row contains a locus tag of the interested gene for individual genome. 
 
 A gene of interest file generated looks like:
 
 ```
 THIARS_RS06055	#Thiomonas_delicata_DSM_16361
-THIARS_RS01045#Thiomonas_delicata_DSM_16361	
 THIX_RS16425	#Thiomonas_sp._X19
+AX2_RS10405	#Achromobacter_xylosoxidans_NBRC_15126_ATCC_27061
+KUC_RS10495	#Halomonas_boliviensis_LC1
+KYC_RS14580	#Achromobacter_arsenitoxydans_SY8
 ...
 ```
 *Users are recommended to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis using multiple threads.*(e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt))
@@ -173,7 +175,7 @@ THIX_RS16425	#Thiomonas_sp._X19
 ```perl
 $ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
 ```
-it would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, one row per genome. each line contains a gene locus tag for each genome, which have max score with the query, the other none-top hits are also listed followed by "#".
+it would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, the blast hits are listed for each genome per row; the best hit (top hit) was used as gene of interest for each genome, and the other none-top hits are also listed followed by "#".
 
 aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
 ```
