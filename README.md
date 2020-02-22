@@ -188,7 +188,7 @@ A Newick format phylogenetic tree is used by Gcluster to automatically accociate
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
-A example of the strain_reorder_file like:
+A example of the strain_reorder_file looks like:
 |strain\_name | order|
 |- | -|
 |Thiomonas_sp.\_FB-Cd| 1|
@@ -257,16 +257,35 @@ After creat a figure for genomes, The user can customize figure using option "-m
 
 * adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
 
-* Importantly, users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+* Revising the gene label
+users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+for exzample:
+Exzample for edit the locus_tag in sub_TFT file:
+```
+3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA
 
-* using a homologous gene clusters file created by users using current OrthoMCL release which uses a SQL database
-by instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own OrthoMCL output using the current OrthoMCL release which uses a SQL database for homologue grouping, the homologous gene clusters file must renamed with suffixes "out". (e.g. *group.out*)
+**revised to**
+
+3072251	3070956	CDS	**moeA;**THI_RS14520	molybdopterin molybdenumtransferase MoeA
+```
+Exzample for edit the locus_tag in all_orthomcl.out file:
+```
+homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 THI_RS14520
+
+**revised to**
+
+homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 **moeA;**THI_RS14520
+```
+
+* Using yourself homologous gene clusters
+by instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own OrthoMCL output using the current OrthoMCL release which uses a SQL database for homologue grouping. it should be noted that the homologous gene clusters file must renamed with suffix "out". (e.g. *group.out*)
 
  perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number] [Options]
  
 
-``` perl
-Detailed Usage
+### Detailed explanations for ARGUMENTS in Gcluster.pl
+
+```
 --------------
     REQUIRED ARGUMENTS:
     ~~~~~~~~~~~~~~~~~~~
