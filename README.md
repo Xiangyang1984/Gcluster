@@ -42,11 +42,13 @@ Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/bl
 This software is available at http://micans.org/mcl/
 
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
+
 	* *my $blastp        = "/usr/bin/blastp";*
 	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
 	* *my $MCL           = "/usr/bin/mcl";*
 
 ***Please set the absolute path for three programs within "interested_gene_generation.pl", as in the following example:
+
 	* *my $blastp        = "/usr/bin/blastp";*
 	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
