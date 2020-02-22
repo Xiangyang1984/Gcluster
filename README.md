@@ -148,9 +148,11 @@ The brief overview of running the Gcluster is as follows:
 
 [Preperation of input data](#preperation-of-input-data)
 
-[Running Gcluster.pl](#running-gcluster.pl)
+[Running Gcluster.pl](#running-gcluster\.pl)
 
 [Running Gcluster.pl](#running-gcluster.pl)
+
+[Running Gcluster.pl](#running-Gcluster\.pl)
 
 
 [Customization of the figure](#customization-of-the-figure)
