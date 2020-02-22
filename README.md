@@ -146,10 +146,16 @@ The Warning happens because the user database has less than 5 sequences in it. O
 ## Usage
 ***
 The brief overview of running the Gcluster is as follows:
+[Installation](#installation）
 
-Preperation of input data
-Running Gcluster.pl
-Customization of the figure
+[Preperation of input data](#preperation-of-input-data）
+
+[Running Gcluster.pl](#running-gcluster.pl）
+
+[Customization of the figure](#customization-of-the-figure)
+
+###### Preperation of input data
+
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
 Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
@@ -199,7 +205,7 @@ A example of the strain_reorder_file looks like:
 |Thiomonas_sp.\_ACO3| 9|
 
 ### step 2: Running Gcluster.pl
-
+###### Running Gcluster.pl
 
 #### Example 1: a simple mode to visualize genome contexts for genomes
 
@@ -236,6 +242,8 @@ A example of the strain_reorder_file looks like:
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
 	
+###### Customization of the figure
+
 	This parameter is very useful to customize the map quickly.After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
 
 	* adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
