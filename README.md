@@ -1,4 +1,4 @@
-![](http://www.microbialgenomic.com/figure_160_final.png)  
+![](https://github.com/Xiangyang1984/gcluster_tool-an-old-version/blob/master/test_data/figure_160_final.png)  
 
 # Gcluster_v2.0.1
 ***
