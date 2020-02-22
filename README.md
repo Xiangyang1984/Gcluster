@@ -155,25 +155,25 @@ The brief overview of running the Gcluster is as follows:
 
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [./test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
 
 #### interested_gene_file (mandatory option)
-interested_gene_file: A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
-
-*Users are recommended to use interested_gene_generation.pl to obtain a list of the interested gene (a two-column tab-delimited text file) by a local blastP analysis using multiple threads.*
+interested_gene_file: A list of the interested gene , in which each line contains a locus tag of the interested gene for individual genome. 
 
 A gene of interest file generated looks like:
 
 ```
-THIARS_RS06055	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	|none_tophit_gene:	THIARS_RS01045#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361	THIARS_RS12880#arsenate_reductase_(azurin)_large_subunit;Thiomonas_delicata_DSM_16361
-THIX_RS16425	#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19	|none_tophit_gene:	THIX_RS10325#arsenate_reductase_(azurin)_large_subunit;Thiomonas_sp._X19
+THIARS_RS06055	#Thiomonas_delicata_DSM_16361
+THIARS_RS01045#Thiomonas_delicata_DSM_16361	
+THIX_RS16425	#Thiomonas_sp._X19
 ...
 ```
-Users can obtained an interested_gene_file using interested_gene_generation.pl:
+*Users are recommended to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis using multiple threads.*(e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt))
 
 ```perl
 $ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
 ```
+it would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, one row per genome. each line contains a gene locus tag for each genome, which have max score with the query, the other none-top hits are also listed followed by "#".
 
 aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
 ```
