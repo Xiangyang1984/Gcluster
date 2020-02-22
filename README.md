@@ -170,7 +170,7 @@ KUC_RS10495	#Halomonas_boliviensis_LC1
 KYC_RS14580	#Achromobacter_arsenitoxydans_SY8
 ...
 ```
-*Users are recommended to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis using multiple threads.*(e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt))
+*Users are recommended  to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis using multiple threads:* 
 
 ```perl
 $ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
@@ -259,23 +259,26 @@ After creat a figure for genomes, The user can customize figure using option "-m
 
 * Revising the gene label
 users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+
 for exzample:
-Exzample for edit the locus_tag in sub_TFT file:
-```
-3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA
+Exzample for editing the locus_tag in sub_TFT file:
 
-**revised to**
+	3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA
 
-3072251	3070956	CDS	**moeA;**THI_RS14520	molybdopterin molybdenumtransferase MoeA
-```
-Exzample for edit the locus_tag in all_orthomcl.out file:
-```
-homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 THI_RS14520
+_Revised to:_
 
-**revised to**
+	3072251	3070956	CDS	**moeA;**THI_RS14520	molybdopterin molybdenumtransferase MoeA
+all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
 
-homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 **moeA;**THI_RS14520
-```
+Exzample for editing the locus_tag in all_orthomcl.out file:
+
+	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 THI_RS14520
+
+_revised to:_
+
+	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 **moeA;**THI_RS14520
+all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
+
 
 * Using yourself homologous gene clusters
 by instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own OrthoMCL output using the current OrthoMCL release which uses a SQL database for homologue grouping. it should be noted that the homologous gene clusters file must renamed with suffix "out". (e.g. *group.out*)
