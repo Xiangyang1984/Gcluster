@@ -1,4 +1,4 @@
-![](http://www.baidu.com/img/bdlogo.gif)  
+![](http://www.microbialgenomic.com/figure_160_final.png)  
 
 # Gcluster_v2.0.1
 ***
