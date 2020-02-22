@@ -5,21 +5,21 @@
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
 
 
-* [Installation](#installation)
+## * [Installation](#installation)
 
-	* [Installing the Gcluster via conda](#Option-1-installing-the-gcluster-via-conda)
+## 	* [Installing the Gcluster via conda](#Option-1-installing-the-gcluster-via-conda)
 
-	* [Installing the Gcluster from source code](#Option-2-installing-the-gcluster-from-source-code)
+## 	* [Installing the Gcluster from source code](#Option-2-installing-the-gcluster-from-source-code)
 
-	* [Test the Gcluster with example data](#test-the-gcluster-with-example-data)
+## 	* [Test the Gcluster with example data](#test-the-gcluster-with-example-data)
 
-* [Usage](#usage)
+## * [Usage](#usage)
 
-	* [Preperation of input data](#preperation-of-input-data)
+## 	* [Preperation of input data](#preperation-of-input-data)
 
-	* [Running Gcluster](#running-gcluster)
+## 	* [Running Gcluster](#running-gcluster)
 
-	* [Customization of the figure](#customization-of-the-figure)
+##	* [Customization of the figure](#customization-of-the-figure)
 
 
 
