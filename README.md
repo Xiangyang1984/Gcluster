@@ -155,7 +155,7 @@ The brief overview of running the Gcluster is as follows:
 
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [./test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
+Genbank_file_directory : A Directory containing annotated genomes as Genbank format file (e.g. [./test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using Aspera, a high-speed file transfer tool (https://downloads.asperasoft.com/). 
 
 #### interested_gene_file (mandatory option)
 interested_gene_file: A list of the interested gene, in which each line contains a locus tag of the interested gene for individual genome. Users are recommended to use "interested_gene_generation.pl" in Gcluster package for generation this file.
