@@ -10,7 +10,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 [Usage](#Usage）
 
-[Installation](#readme)
+[Installation](#installation)
 
 [Usage](#readme)
 
