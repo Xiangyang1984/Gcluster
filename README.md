@@ -67,6 +67,10 @@ Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/bl
 This software is available at http://micans.org/mcl/
 
 <font color=blue size=72>color=gray</font>
+
+<font color=#00ffff size=72>color=#00ffff</font>
+
+
 ***Please set the absolute path for three programs within "Gcluster.pl", as in the following example:
 
 	* *my $blastp        = "/usr/bin/blastp";*
