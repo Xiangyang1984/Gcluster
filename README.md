@@ -203,61 +203,47 @@ A example of the strain_reorder_file looks like:
 
 ### step 2: Running Gcluster.pl
 
-```
 
 #### Example 1: a simple mode to visualize genome contexts for genomes
 
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory]*
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o ./out_directory
+		Runs Gcluster.pl using the input gbk files under ./test_data/gbk and interested_gene_name.txt as interested_gene_file.
+		Places data in ./out_directory. Gets other parameters using default value.
 
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory
+#### Example 2: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
 
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -o out_directory
+		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
+		16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. Gets other parameters using default value.
 
-#### Example 2: Using multiple threads to short times
-
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -m [multiple_threads]*
-
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -m 6
-
-
-#### Example 3: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
-
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory]*
-
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree 16S_rRNA_tree.nwk -o out_directory
-
-
-#### Example 4: 100 genes flanking gene of interest are set to show
-
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -srf [strain_reorder_file] -o [Gcluster_output_directory] -n [flanking_gene_number]*
+#### Example 3: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -srf temp_strain_reorder_file -o out_directory -n 100
+		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
+		temp_strain_reorder_file as strain_reorder_file. Places data in ./out_directory. Gets other parameters using default
+		value.
 
+#### Example 4: use multiple threads, and set the number of the flanking gene of interest to show
+
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -o out_directory -m 4 -n 100
+		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
+		16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. 4 threads are used, 100 genes flanked gene of interest are set to show, and other parameters use default value.
 
 #### Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
 
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -sub_TFT [start_at_sub_TFT]*
-
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
 
-#### Example 6: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+#### Example 5: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. 
 
 *perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map [start_at_map]*
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
+	
+	This parameter is very useful to customize the map quickly.After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
 
-#### Example 7: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. This parameter is very useful to customize the map quickly.
+	* adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
 
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number]*
-
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
-
-```
-
-After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
-
-* adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
-
-* Revising the gene label
+	* Revising the gene label
 users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
 
 for exzample:
