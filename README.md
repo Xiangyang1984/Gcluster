@@ -7,7 +7,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 * [Installation](#installation)
 
-	* [Installing the Gcluster via conda](#installing-the-gcluster-via-conda)
+	* [Installing the Gcluster via conda](#Option-1-installing-the-gcluster-via-conda)
 
 	* [Installing the Gcluster from source code](#installing-the-gcluster-from-source-code)
 
@@ -28,14 +28,14 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 ***
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
-### **Option 1**: Installing the Gcluster via conda
+### **Option 1** Installing the Gcluster via conda
 We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
 
 	$ conda install -c bioconda gcluster
 
 Once installation finished, the absolute paths for mcl, blastp and makeblastdb are auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should now be able to run Gcluster.
 
-### **Option 2**: Installing the Gcluster from source code
+### **Option 2** Installing the Gcluster from source code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
 #### Step 1: Download source code
 Download Gcluster，and put the Gcluster directory into your PATH with the following command：
