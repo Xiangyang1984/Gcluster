@@ -1,13 +1,15 @@
+![](http://www.baidu.com/img/bdlogo.gif)  
+
 # Gcluster_v2.0.1
 ***
-Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster_v1.01 under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
+Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
   
 ## Installation
 ***
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
 ### **Option 1**: Installing the Gcluster via conda
-We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with conda run:
+We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
 
 	$ conda install -c bioconda gcluster
 
@@ -34,7 +36,7 @@ These can be installed with cpan using:
 Additional software dependencies for the pipeline are as follows:
 
 * makeblastdb and blastp  
-Both of them come from NCBI BLAST+, available at ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/
+Both of them come from NCBI BLAST+, available at https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 
 * mcl (Markov Clustering algorithm)  
 This software is available at http://micans.org/mcl/
@@ -49,7 +51,7 @@ This software is available at http://micans.org/mcl/
 * *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
 ### Test the Gcluster with example data
-Once step 1-3 are finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **./test.pl** script as below:
+Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **test.pl** script as below:
 
 	$ perl ./test.pl
 	
@@ -123,12 +125,15 @@ Once step 1-3 are finished, a small dataset in the **./test_data** directory can
 	################################################################
 	Ok, interested_gene_generation.pl works success!
 
-Once all tests have passed then you are ready to start using the Gcluster.  
+The Warning happens because the user database has less than 5 sequences in it. Once all tests have passed then you are ready to start using the Gcluster.  
 
 ## Usage
 ***
 The brief overview of running the Gcluster is as follows:
 
+Preperation of input data
+Running Gcluster.pl
+Customization of the figure
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
 Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
