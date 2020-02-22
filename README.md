@@ -12,35 +12,37 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 * [Installation](#installation)
 
- 	* [Installing the Gcluster via conda](#Option-1-installing-the-gcluster-via-conda)
+ 	* [Option-1 Installing the Gcluster via Conda](#Option-1-installing-the-gcluster-via-conda)
 	
- 	* [Installing the Gcluster from source code](#Option-2-installing-the-gcluster-from-source-code)
+ 	* [Option-2 Installing the Gcluster from Source Code](#Option-2-installing-the-gcluster-from-source-code)
 	
- 	* [Test the Gcluster with example data](#test-the-gcluster-with-example-data)
+ 	* [Test the Gcluster with Example Data](#test-the-gcluster-with-example-data)
 	
  * [Usage](#usage)
  
- 	* [Preperation of input data](#preperation-of-input-data)
+ 	* [Preperation of Input Data](#preperation-of-input-data)
 	
- 	* [Running Gcluster](#running-gcluster)
+ 	* [Running Gcluster.pl](#running-gcluster)
 	
-	* [Customization of the figure](#customization-of-the-figure)
+	* [Customization of the Figure](#customization-of-the-figure)
+	
+	* [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster)
 
 
 
-[回到顶部](#readme)
+
 ## Installation
 ***
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
-### **Option-1** Installing the Gcluster via conda
+### **Option-1** Installing the Gcluster via Conda
 We build a bioconda package for Gcluster, users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
 
 	$ conda install -c bioconda gcluster
 
 Once installation finished, the absolute paths for mcl, blastp and makeblastdb are auto-configured well for Gcluster.pl and interested_gene_generation.pl, so uers should now be able to run Gcluster.
 
-### **Option-2** Installing the Gcluster from source code
+### **Option-2** Installing the Gcluster from Source Code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
 #### Step 1: Download source code
 Download Gcluster，and put the Gcluster directory into your PATH with the following command：
@@ -77,7 +79,7 @@ This software is available at http://micans.org/mcl/
 	* *my $blastp        = "/usr/bin/blastp";*
 	* *my $makeblastdb   = "/usr/bin/makeblastdb";*
 
-### Test the Gcluster with example data
+### Test the Gcluster with Example Data
 Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOSX**) successfully or not using the **test.pl** script as below:
 
 	$ perl ./test.pl
@@ -158,15 +160,8 @@ The Warning happens because the user database has less than 5 sequences in it. O
 ***
 The brief overview of running the Gcluster is as follows:
 
-[Preperation of input data](#preperation-of-input-data)
+### Preperation of Input Data
 
-[Running Gcluster](#running-gcluster)
-
-[Customization of the figure](#customization-of-the-figure)
-
-### Preperation of input data
-
-### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
 Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
@@ -214,33 +209,34 @@ A example of the strain_reorder_file looks like:
 |Thiomonas_arsenitoxydans\_3As| 7|
 |Thiomonas_sp.\_ACO3| 9|
 
-### step 2: Running Gcluster
 ### Running Gcluster
 
 #### Example 1: a simple mode to visualize genome contexts for genomes
 
+Runs Gcluster.pl using the input gbk files under ./test_data/gbk and interested_gene_name.txt as interested_gene_file. Places data in ./out_directory. Gets other parameters using default value.
+
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o ./out_directory
-		Runs Gcluster.pl using the input gbk files under ./test_data/gbk and interested_gene_name.txt as interested_gene_file.
-		Places data in ./out_directory. Gets other parameters using default value.
+		
 
 #### Example 2: A Newick format tree file is used by Gcluster to automatically accociate the genomic context with their phylogeny
 
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -o out_directory
-		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
-		16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. Gets other parameters using default value.
+Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and 16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. Gets other parameters using default value.
+
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -o out_directory		
 
 #### Example 3: A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement
 
+Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and temp_strain_reorder_file as strain_reorder_file. Places data in ./out_directory. Gets other parameters using default value.
+
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -srf temp_strain_reorder_file -o out_directory -n 100
-		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
-		temp_strain_reorder_file as strain_reorder_file. Places data in ./out_directory. Gets other parameters using default
-		value.
+		
 
 #### Example 4: use multiple threads, and set the number of the flanking gene of interest to show
 
+Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and 16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. 4 threads are used, 100 genes flanked gene of interest are set to show, and other parameters use default value.
+
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -tree ./test_data/16S_rRNA_tree.nwk -o out_directory -m 4 -n 100
-		Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gene_name.txt as interested_gene_file, and
-		16S_rRNA_tree.nwk as phylogenetic_file. Places data in ./out_directory. 4 threads are used, 100 genes flanked gene of interest are set to show, and other parameters use default value.
+		
 
 #### Example 5: Jump to generate a collection of sub-TFT tables and perform homologous gene analysis (Default: F). Skips sequences extraction and TFT file generation. 
 
@@ -248,20 +244,18 @@ A example of the strain_reorder_file looks like:
 
 #### Example 5: Jump to map generation. Generation of a collection of sub-TFT tables and homologous gene clusters has already been done. 
 
-*perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -o [Gcluster_output_directory] -map [start_at_map]*
-
-	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
+	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -map T
 	
-### Customization of the figure
+### Customization of the Figure
 
-	This parameter is very useful to customize the map quickly.After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
+After a figure has been created, the user can customize figure by modofication of the parameters and re-draw the figure by using option "--start_at_map = T", which is very useful option to customize the map quickly. 
 
-	* adjust the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
+Gcluster offers flexibility to customize figure, mainly contains:
 
-	* Revising the gene label
-users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+* (1) Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
 
-for exzample:
+* (2) Revising the gene label. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+
 Exzample for editing the locus_tag in sub_TFT file:
 
 	3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA
@@ -281,13 +275,13 @@ _revised to:_
 all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
 
 
-* Using yourself homologous gene clusters
+* (3) Using yourself homologous gene clusters
 by instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own OrthoMCL output using the current OrthoMCL release which uses a SQL database for homologue grouping. it should be noted that the homologous gene clusters file must renamed with suffix "out". (e.g. *group.out*)
 
  perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number] [Options]
  
 
-### Detailed explanations for ARGUMENTS in Gcluster.pl
+### Detailed Explanations for Arguments in Gcluster
 
 ```
 --------------
@@ -402,3 +396,9 @@ by instead of "all_orthomcl.out" created by Gcluster, users can supply homologou
              Show this message.
 
 ```
+
+## COPYRIGHT
+
+Dr. Xiangyang Li (E-mail: lixiangyang\@fudan.edu.cn, lixiangyang1984\@gmail.com), Fudan university; Kaili University; Bacterial Genome Data mining & Bioinformatic Analysis (http://www.microbialgenomic.com/).
+
+Copyright 2020, Xiangyang Li. All Rights Reserved.
