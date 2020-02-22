@@ -20,7 +20,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 	
  * [Usage](#usage)
  
- 	* [Preperation of Input Data](#preperation-of-input-data)
+ 	* [Preparation of Input Data](#preparation-of-input-data)
 	
  	* [Running Gcluster.pl](#running-gcluster)
 	
@@ -157,9 +157,9 @@ The Warning happens because the user database has less than 5 sequences in it. O
 
 ## Usage
 ***
-It is very simple to use Gcluster. First, you should perpera input data (Genbank_file_directory, and a list of gene of interest); then, users could run Gcluster like this; finally, after a figure created, it can be modified by adjusting the parameters (refer to [Detailed Explanations for Arguments](detailed-explanations-for-arguments)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. The brief overview of running the Gcluster is as follows:
+It is very simple to use Gcluster. First, you should prepare input data (Genbank_file_directory, and a list of gene of interest); then, users could run Gcluster like this; finally, after a figure created, it can be modified by adjusting the parameters (refer to [Detailed Explanations for Arguments](detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. The brief overview of running the Gcluster is as follows:
 
-### Preperation of Input Data
+### Preparation of Input Data
 
 To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory, a directory containing annotated genomes in GenBank format, and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or map the genome contexts to the phylogenetic_file. 
 
