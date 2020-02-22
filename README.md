@@ -8,7 +8,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 * [Usage](#Usage）
 * [Usage](#Usage）
 
-
+[回到顶部](#readme)
 ## Installation
 ***
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
