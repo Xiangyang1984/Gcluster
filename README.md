@@ -144,15 +144,18 @@ The brief overview of running the Gcluster is as follows:
 
 [Preperation of input data](#preperation of input data）
 
-[Running Gcluster.pl](#running-gcluster.pl）
+[Running Gcluster.pl](#running-Gcluster.pl）
 
 [Preperation of input data](#preperation-of-input-data)
 
 [Running Gcluster.pl](#running-gcluster.pl)
 
+[Running Gcluster.pl](#running-gcluster.pl)
+
+
 [Customization of the figure](#customization-of-the-figure)
 
-###### Preperation of input data
+### Preperation of input data
 
 ### step 1: Preperation of input data
 #### Genbank_file_directory (mandatory option)
@@ -203,7 +206,7 @@ A example of the strain_reorder_file looks like:
 |Thiomonas_sp.\_ACO3| 9|
 
 ### step 2: Running Gcluster.pl
-###### Running Gcluster.pl
+### Running Gcluster.pl
 
 #### Example 1: a simple mode to visualize genome contexts for genomes
 
@@ -240,7 +243,7 @@ A example of the strain_reorder_file looks like:
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -sub_TFT T
 	
-###### Customization of the figure
+### Customization of the figure
 
 	This parameter is very useful to customize the map quickly.After creat a figure for genomes, The user can customize figure using option "-map/--start_at_sub_map":
 
