@@ -12,9 +12,9 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 * [Installation](#installation)
 
- 	* [Option-1 Installing the Gcluster via Conda](#Option-1-installing-the-gcluster-via-conda)
+ 	* [Installing the Gcluster via Conda](#installing-the-gcluster-via-conda)
 	
- 	* [Option-2 Installing the Gcluster from Source Code](#Option-2-installing-the-gcluster-from-source-code)
+ 	* [Installing the Gcluster from Source Code](#installing-the-gcluster-from-source-code)
 	
  	* [Test the Gcluster with Example Data](#test-the-gcluster-with-example-data)
 	
@@ -29,18 +29,18 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 	* [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster)
 
 
-## Installation
+# Installation
 ***
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
-### **Option-1** Installing the Gcluster via Conda
+## Installing the Gcluster via Conda
 We have build a bioconda package for Gcluster. Users are recommended to install the [conda](https://www.anaconda.com), then to install this package with the following command:
 
 	$ conda install -c bioconda gcluster
 
 Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so users should be able to run Gcluster.
 
-### **Option-2** Installing the Gcluster from Source Code
+## Installing the Gcluster from Source Code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
 #### Step 1: Download source code
 Download Gcluster，and put the Gcluster directory into your PATH with the following command：
@@ -78,7 +78,7 @@ This software is available at http://micans.org/mcl/
 	my $blastp        = "/usr/bin/blastp";
 	my $makeblastdb   = "/usr/bin/makeblastdb";
 
-### Test the Gcluster with Example Data
+## Test the Gcluster with Example Data
 Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOS**) successfully or not using the **test.pl** script as below:
 
 	$ perl ./test.pl
@@ -155,11 +155,11 @@ Once Gcluster installation finished, a small dataset in the **./test_data** dire
 
 The Warning happens because the user database has less than 5 sequences in it. Once all tests have passed then you are ready to start using the Gcluster.  
 
-## Usage
+# Usage
 ***
 It is very simple to use Gcluster. First, prepare input datas, at least containing Genbank_file_directory and interested_gene_file; then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
 
-### Preparation of Input Datas
+## Preparation of Input Datas
 
 To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory and (2) interested_gene_file. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or auto-map the genome contexts to the phylogenetic tree. 
 
@@ -232,7 +232,7 @@ For example, In the "./test_data" directory, temp_strain_reorder_file is a strai
 |Thiomonas_arsenitoxydans\_3As| 7|
 |Thiomonas_sp.\_ACO3| 8|
 
-### Running Gcluster
+## Running Gcluster
 
 It is very simple to run Gcluster.pl. Here, we provided several examples to show how to use Gcluster.pl. All input datas come from [./test_data] ((https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/) in Gcluster package. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".
 
@@ -271,7 +271,7 @@ Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gen
 
 	$ perl Gcluster.pl -dir ./test_data/gbk -gene ./test_data/interested_gene_name.txt -o out_directory -map T
 	
-### Customization of the Figure
+## Customization of the Figure
 
 After a figure has been created, the user can customize figure by modofication of the parameters and re-draw the figure by using option "--start_at_map = T", which is very useful option to customize the map quickly. 
 
@@ -329,7 +329,7 @@ Please following these steps:
 (2) Open "Gcluster_output_directory/directory_homologs_cluster", which is the place to hold the homologous gene cluster file "all_orthomcl.out" generated by Gcluster. Place your supplied homologous genes analysis output into this directory, rename it with suffix ".out" (e.g. group.out), and delete "all_orthomcl.out"; 
 (3) Run Gcluster again with the same options as step (1), but add the option "-start_at_map T".
  
-### Detailed Explanations for Arguments in Gcluster
+## Detailed Explanations for Arguments in Gcluster
 
 ```
 --------------
