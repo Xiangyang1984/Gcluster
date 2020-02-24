@@ -123,7 +123,7 @@ Large test data is available at website (http://www.microbialgenomic.com/160_gen
        -label, --show_label
              Display the gene label (gene Locus Tag or genename) (Default: T).
        -ul, --unification_label
-             Unify gene lable for homologous gene cluster (Default: T). Among a set of homologous gene cluster, if a gene is annotated with a name X, all other genes will be labeled with X.
+             Unify gene label for homologous gene cluster (Default: T). Among a set of homologous gene cluster, if a gene is annotated with a name X, all other genes will be labeled with X.
        -family, --font_family
              Set font family for the genome name and the gene label, e.g. Times New Roman, Arial, Verdana and so on (Default: Times New Roman). Users are suggested to choose font family listed in metrcis module, or causing a miscalculation of string width for genome name in SVG-format map.
        -style, --font_style
