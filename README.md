@@ -375,7 +375,7 @@ It should be noted that the homologous gene clusters file created by users must 
        -family, --font_family
              Set font family for the genome name and the gene label, e.g. Times New Roman, Arial, Verdana and so on (Default: Times New Roman). Users are suggested to choose font family listed in metrcis module, or causing a miscalculation of string width for genome name in SVG-format map.
        -style, --font_style
-             Set font style for the genome name and the gene label, e.g. Normal, Bold, Italic (Default: Normal).
+             Set font style for the genome name and the gene label, e.g. Normal, Bold, Italic (Default: Normal). It should be noted that the font style "Bold" does not work when using to cearte a PNG format figure in MacOS.
        -size, --label_font_size
              Set font size for gene label (Default: 6).
        -color, --label_font_color
