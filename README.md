@@ -161,12 +161,16 @@ It is very simple to use Gcluster. First, you should prepare input data (Genbank
 
 ### Preparation of Input Data
 
-To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory, a directory containing annotated genomes in GenBank format, and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or map the genome contexts to the phylogenetic_file. 
+To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory, a directory containing annotated genomes in GenBank format, and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or map the genome contexts to the phylogenetic tree. 
 
 Four input data are as follows:
 
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). For large number of genomes, users are recommended to download using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Genbank files can download from NCBI, Rast or other genome annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+
+
+	$ ascp -i $asperaweb_id_dsa_openssh -i $aspera_tokenauth_id_rsa -P 22 -O 33001 -k 1 -T -l 200m --mode=recv --user=anonftp --host=ftp.ncbi.nlm.nih.gov --file-list=$FTP_download_site_list $out_dir
+
 
 #### interested_gene_file (mandatory option)
 interested_gene_file: A list of the interested gene, in which each row contains a locus tag of the interested gene for individual genome. 
