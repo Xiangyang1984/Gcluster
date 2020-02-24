@@ -92,9 +92,9 @@ Large test data is available at website (http://www.microbialgenomic.com/160_gen
              Only color certain homologous gene clusters, in which the holding number of different genomes exceeds the threshold number (Default: 0). This is measured using (X/Y)*100. In this formula, X denotes the number of different genomes in a set of homologous gene cluster, and Y denotes the total number of genomes. This parameter is useful when no enough rgb colors are provided in colors_configure_file under color_configure direcoty. Users could to reduce the number of colors used by setting a high value.  
        -c_color_b, --cds_color_border
              To color the border of the CDS genes (Default: black), users can choose from blue, black, red, white, gray, dgray.
-       -p_color_b, --pseudo_gene_color_border
+       -p_color_b, --pseudo_color_border
              To color the border of the Pseudo genes (Default: dgray), users can choose from blue, black, red, white, gray, dgray.
-       -r_color_b, --RNA_gene_color_border
+       -r_color_b, --RNA_color_border
              To color the border of the RNA (tRNA, rRNA) genes (Default: red), users can choose from blue, black, red, white, gray, dgray.
        -no_color_f, --gene_no_color_filled
              To fill uniqe genes (including RNA genes), pseudo genes, and homologous gene clusters not meeting the criteria set by "percent_strain_homologouscluster_color" parameter with a single color (Default: white), users can choose from blue, black, red, white, gray, dgray.
