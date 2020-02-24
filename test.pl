@@ -31,7 +31,9 @@ if ($check_g eq 0){
 
 ##########160 genomes data are used to create the compact version of the image in Fig. 1
 # This command is used to create the compact version of the image in Fig. 1 in the manuscript using 160 genomes datas, which can be download from http://www.microbialgenomic.com/160_genomes_testdata.tar.gz.
-# my $check_g = system ("perl $script_dir/Gcluster.pl -dir $script_dir/160_genomes_testdata/160_gbk -gene $script_dir/160_genomes_testdata/interested_gene_name.txt -tree $script_dir/160_genomes_testdata/160.rRNA.nwk -m 10 -n 10 -size 1 -dis 5 -l 1 -w 1 -PNG T -map T -strain_name_font_size 3 -scale 0.15 -x_step 1 -dw 0.2");
+# (1) first run Gcluster: $check_g = system ("perl $script_dir/Gcluster.pl -dir $script_dir/160_genomes_testdata/160_gbk -gene $script_dir/160_genomes_testdata/interested_gene_name.txt -tree $script_dir/160_genomes_testdata/160.rRNA.nwk -m 10 -n 10 -size 1 -dis 5 -l 1 -w 1 -PNG T -strain_name_font_size 3 -scale 0.15 -x_step 1 -dw 0.2");
+# (2) modified the genes' names by editing the sub_TFT files
+# (3) run Gcluser again with the same options as step (1), and add an option "-map T": my $check_g = system ("perl $script_dir/Gcluster.pl -dir $script_dir/160_genomes_testdata/160_gbk -gene $script_dir/160_genomes_testdata/interested_gene_name.txt -tree $script_dir/160_genomes_testdata/160.rRNA.nwk -m 10 -n 10 -size 1 -dis 5 -l 1 -w 1 -PNG T -map T -strain_name_font_size 3 -scale 0.15 -x_step 1 -dw 0.2");
 ##########
 
 
