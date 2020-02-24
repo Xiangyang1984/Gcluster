@@ -1,4 +1,4 @@
-Gcluster_v2.0.1
+Gcluster
 ===
 
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
@@ -163,6 +163,7 @@ Four input datas are as follows:
 Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
 *Genomes must be annotated
+
 *Special characters and blank are not allowed in file names
 
 #### * interested_gene_file (mandatory option)
@@ -272,9 +273,11 @@ Gcluster offers flexibility to customize figure, mainly contains:
 
 **Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on.** To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
 
-**Revising the gene label** Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+**Revising the gene label**
+
+Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
   
-Exzample for editing the locus_tag in sub_TFT file: 
+* Exzample 1: editing the locus_tag in sub_TFT file: 
 
 Sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
 
@@ -300,7 +303,7 @@ _Directly edit the locus_tag, e.g. revised "THI_RS14520" to "moeA;THI_RS14520":_
 
 Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, "All genes homologous to THI_RS14520 will have gene label "moeA" in output figure if option "--unification_label" set to "T".
 
-Exzample for editing the locus_tag in all_orthomcl.out file:
+* Exzample 2: editing the locus_tag in all_orthomcl.out file:
 
 	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 THI_RS14520
 
