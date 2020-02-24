@@ -162,9 +162,9 @@ Four input datas are as follows:
 #### * Genbank_file_directory (mandatory option)
 Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
-*Genomes must be annotated
+* Genomes must be annotated
 
-*Special characters and blank are not allowed in file names
+* Special characters and blank are not allowed in file names
 
 #### * interested_gene_file (mandatory option)
 interested_gene_file: a list of genes of interest, in which each row contains a locus tag of the gene of interest, and each genome has only one gene. For example, if there are 50 genomes in "genbank_file_directory", each of these 50 genomes must have a locus tag of gene of interest in "interested_gene_file". It should be noted that each genome must contains only one locus tag in the interested_gene_file if a phylogenetic_file option is used.
@@ -273,9 +273,7 @@ Gcluster offers flexibility to customize figure, mainly contains:
 
 **Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on.** To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
 
-**Revising the gene label**
-
-Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+**Revising the gene label**. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
   
 * Exzample 1: editing the locus_tag in sub_TFT file: 
 
@@ -314,9 +312,7 @@ _revised to:_
 Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, all genes homologous to THI_RS14520 will have gene label "moeA" in output figure if option "--unification_label" set to "T".
 
 
-**Using yourself homologous gene clusters**
-
-By instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own homologous genes analysis output using a third-party tool (e.g. the current OrthoMCL release which uses a SQL database). When using a third-party tool to do homologous genes analysis, the input protein sequence files should follow these rules: 
+**Using yourself homologous gene clusters**. By instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own homologous genes analysis output using a third-party tool (e.g. the current OrthoMCL release which uses a SQL database). When using a third-party tool to do homologous genes analysis, the input protein sequence files should follow these rules: 
 
 	* Must use the "locus_tag" (e.g. THIARS_RS06055) or "genename;locus_tag" (e.g. aioB;THIARS_RS06055) as the sequence id. We recommonded users to use the protein sequence files produced by Gcluster as input data to detect homologous genes. 
 
