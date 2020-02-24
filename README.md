@@ -281,7 +281,8 @@ Gcluster offers flexibility to customize figure, mainly contains:
 
 * Revising the gene label. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
   
-Exzample for editing the locus_tag in sub_TFT file: sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
+Exzample for editing the locus_tag in sub_TFT file: 
+sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
 
 	3070412	3069432	CDS	THI_RS14510	hypothetical protein	NC_014145
 	3070903	3070325	CDS	THI_RS14515	hypothetical protein	NC_014145
@@ -303,7 +304,7 @@ _Directly edit the locus_tag, e.g. revised "THI_RS14520" to "moeA;THI_RS14520":_
 	3074645	3074097	CDS	THI_RS14540	nitroreductase	NC_014145
 	...
 
-Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, "All genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
+Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, "All genes homologous to THI_RS14520 will have gene label "moeA" in output figure if option "--unification_label" set to "T".
 
 Exzample for editing the locus_tag in all_orthomcl.out file:
 
@@ -313,7 +314,7 @@ _revised to:_
 
 	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 moeA;THI_RS14520
 	
-Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
+Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, all genes homologous to THI_RS14520 will have gene label "moeA" in output figure if option "--unification_label" set to "T".
 
 
 * Using yourself homologous gene clusters
@@ -412,7 +413,7 @@ Please following these steps:
        -label, --show_label
              Display the gene label (gene Locus Tag or genename) (Default: T).
        -ul, --unification_label
-             Unify gene lable for homologous gene cluster (Default: T). Among a set of homologous gene cluster, if a gene is annotated with a name X, all other genes will be labeled with X.
+             Unify gene label for homologous gene cluster (Default: T). Among a set of homologous gene cluster, if a gene is annotated with a name X, all other genes will be labeled with X.
        -family, --font_family
              Set font family for the genome name and the gene label, e.g. Times New Roman, Arial, Verdana and so on (Default: Times New Roman). Users are suggested to choose font family listed in metrcis module, or causing a miscalculation of string width for genome name in SVG-format map.
        -style, --font_style
