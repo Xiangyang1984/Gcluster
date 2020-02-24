@@ -98,6 +98,8 @@ Large test data is available at website (http://www.microbialgenomic.com/160_gen
              To color the border of the RNA (tRNA, rRNA) genes (Default: red), users can choose from blue, black, red, white, gray, dgray.
        -no_color_f, --gene_no_color_filled
              To fill uniqe genes (including RNA genes), pseudo genes, and homologous gene clusters not meeting the criteria set by "percent_strain_homologouscluster_color" parameter with a single color (Default: white), users can choose from blue, black, red, white, gray, dgray.
+       -dw, --line_drawing_width    
+             Set the line drawing width (Default: 1).
        -l, --arrow_relative_Length    
              Set the relative length of the gene arrow (Default: 4).
        -w, --arrow_relative_Height
@@ -184,6 +186,7 @@ my %options = (
     'pseudo_color_border'                          => "dgray", #mark Pseudo genes, choose from blue, black, red, white, gray, dgray
     'RNA_color_border'                             => "red",   #mark RNA genes, choose from blue, black, red, white, gray, dgray
     'gene_no_color_filled'                         => "white", #choose from blue, black, red, white, gray, dgray
+    'line_drawing_width'                           => 1,    
     'arrow_relative_Length'                        => 4,
     'arrow_relative_Height'                        => 6,
     'figure_Scale_up_multiple'                     => 0.5,
@@ -232,6 +235,7 @@ GetOptions(
     'p_color_b|pseudo_color_border=s'                => \$options{pseudo_color_border},
     'r_color_b|RNA_color_border=s'                   => \$options{RNA_color_border},  
     'no_color_f|gene_no_color_filled=s'              => \$options{gene_no_color_filled}, 
+    'dw|line_drawing_width=f'                        => \$options{line_drawing_width}, 
     'l|arrow_relative_Length=f'                      => \$options{arrow_relative_Length}, 
     'w|arrow_relative_Height=f'                      => \$options{arrow_relative_Height}, 
     'scale|figure_Scale_up_multiple=f'               => \$options{figure_Scale_up_multiple},
