@@ -75,7 +75,7 @@ sub create_image_PNG {
         $gray= $image->colorAllocate (212,212,212);
         $dgray= $image->colorAllocate (153,153,153);
         #$ddgray   = $image->colorAllocate(127,127,127);
-
+        $image->setThickness($options{line_drawing_width}); #set the line drawing width
         $image->filledRectangle(0, 0, $image_width, $image_height, $white); #add a white background color in image
         
         $font_path = "$home_directory/font_configure/6x10.bdf.fnt";
