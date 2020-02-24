@@ -1,11 +1,5 @@
 Gcluster_v2.0.1
 ===
- <div align = right> 
-	
-![](https://github.com/Xiangyang1984/gcluster_tool-an-old-version/blob/master/test_data/figure_160_final.png)
-
-</div>
-
 ***
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
 
@@ -167,6 +161,7 @@ Four input datas are as follows:
 
 #### * Genbank_file_directory (mandatory option)
 Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+
 *Genomes must be annotated
 *Special characters and blank are not allowed in file names
 
