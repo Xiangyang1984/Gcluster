@@ -20,7 +20,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 	
  * [Usage](#usage)
  
- 	* [Preparation of Input Data](#preparation-of-input-data)
+ 	* [Preparation of Input Datas](#preparation-of-input-datas)
 	
  	* [Running Gcluster.pl](#running-gcluster)
 	
@@ -157,11 +157,11 @@ The Warning happens because the user database has less than 5 sequences in it. O
 
 ## Usage
 ***
-It is very simple to use Gcluster. First, prepare input datas (must containing Genbank_file_directory, and interested_gene_file); then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure is will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
+It is very simple to use Gcluster. First, prepare input datas, at least containing Genbank_file_directory and interested_gene_file; then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
 
-### Preparation of Input Data
+### Preparation of Input Datas
 
-To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or auto-map the genome contexts to the phylogenetic tree. 
+To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory and (2) interested_gene_file. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or auto-map the genome contexts to the phylogenetic tree. 
 
 Four input datas are as follows:
 
@@ -209,7 +209,7 @@ Users can directly use the interested_gene_name.txt as "interested_gene_file", o
 #### phylogenetic_file (optional option) 
 A phylogenetic tree must be Newick format. It is used by Gcluster to automatically accociate the genomic contexts with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) for batch extraction of 16S rRNA gene sequences from gbk directory, which can be used to build a 16S rRNA gene tree using software like [MEGA](https://www.megasoftware.net/).
 
-For example, In the "./test_data" directory, "16S_rRNA_tree.nwk" is a Newick format phylogenetic tree that looks like:
+For example, In the "./test_data" directory, 16S_rRNA_tree.nwk is a Newick format phylogenetic tree that looks like:
 
 ```
 ((Thiomonas_arsenitoxydans_3As:0.00000000,(Thiomonas_intermedia_K12:0.00000000,(Thiomonas_sp._ACO3:0.00000000,(Thiomonas_sp._ACO7:0.00000000,Thiomonas_sp._B1:0.00000000)0.9480:0.00000000)0.9480:0.00000000)0.9480:0.00000000)0.9480:0.00114649,Thiomonas_intermedia_ATCC_15466:0.00539174,((Thiomonas_delicata_DSM_16361:0.00511954,Thiomonas_sp._X19:0.00997309)0.6650:0.00159532,Thiomonas_sp._FB-Cd:0.00731752)1.0000:0.05355405);
@@ -218,7 +218,7 @@ For example, In the "./test_data" directory, "16S_rRNA_tree.nwk" is a Newick for
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
-For example, In the "./test_data" directory, "temp_strain_reorder_file" is a strain reorder file that looks like:
+For example, In the "./test_data" directory, temp_strain_reorder_file is a strain reorder file that looks like:
 
 |strain\_name | order|
 |- | -|
@@ -234,9 +234,9 @@ For example, In the "./test_data" directory, "temp_strain_reorder_file" is a str
 
 ### Running Gcluster
 
+It is very simple to run Gcluster.pl. Here, we provided several examples to show how to use Gcluster.pl. All input datas come from [./test_data] ((https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/) in Gcluster package. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".
 
-
-#### Example 1: a simple mode to visualize genome contexts for genomes
+#### Example 1: A simple mode to visualize genome contexts for genomes
 
 Runs Gcluster.pl using the input gbk files under ./test_data/gbk and interested_gene_name.txt as interested_gene_file. Places data in ./out_directory. Gets other parameters using default value.
 
@@ -277,18 +277,33 @@ After a figure has been created, the user can customize figure by modofication o
 
 Gcluster offers flexibility to customize figure, mainly contains:
 
-* (1) Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts. 
+* (1) Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
 
 * (2) Revising the gene label. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+  
+Exzample for editing the locus_tag in sub_TFT file: sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
 
-Exzample for editing the locus_tag in sub_TFT file:
+	3070412	3069432	CDS	THI_RS14510	hypothetical protein	NC_014145
+	3070903	3070325	CDS	THI_RS14515	hypothetical protein	NC_014145
+	3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA	NC_014145
+	3073392	3072256	CDS	THI_RS14525	GTP 3',8-cyclase MoaA	NC_014145
+	3073775	3073434	CDS	THI_RS14530	ArsR family transcriptional regulator	NC_014145
+	3074068	3073772	CDS	THI_RS14535	hypothetical protein	NC_014145
+	3074645	3074097	CDS	THI_RS14540	nitroreductase	NC_014145
+	...
+	
+Directly edit the locus_tag, e.g. revised "THI_RS14520" to "moeA;THI_RS14520":
 
-	3072251	3070956	CDS	THI_RS14520	molybdopterin molybdenumtransferase MoeA
+	3070412	3069432	CDS	THI_RS14510	hypothetical protein	NC_014145
+	3070903	3070325	CDS	THI_RS14515	hypothetical protein	NC_014145
+	3072251	3070956	CDS	moeA;THI_RS14520	molybdopterin molybdenumtransferase MoeA	NC_014145
+	3073392	3072256	CDS	THI_RS14525	GTP 3',8-cyclase MoaA	NC_014145
+	3073775	3073434	CDS	THI_RS14530	ArsR family transcriptional regulator	NC_014145
+	3074068	3073772	CDS	THI_RS14535	hypothetical protein	NC_014145
+	3074645	3074097	CDS	THI_RS14540	nitroreductase	NC_014145
+	...
 
-_Revised to:_
-
-	3072251	3070956	CDS	**moeA;**THI_RS14520	molybdopterin molybdenumtransferase MoeA
-all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
+Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, "All genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
 
 Exzample for editing the locus_tag in all_orthomcl.out file:
 
@@ -296,30 +311,24 @@ Exzample for editing the locus_tag in all_orthomcl.out file:
 
 _revised to:_
 
-	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 **moeA;**THI_RS14520
-all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
+	homologous_gene_cluster_8(5 genes,5 taxa): ACO3_RS13890 ACO7_RS14160 THICB1_RS17625 THIX_RS16470 moeA;THI_RS14520
+	
+Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, all genes homologous to THI_RS14520 will have gene lable "moeA" in output figure if option "--unification_lable" set to "T".
 
 
 * (3) Using yourself homologous gene clusters
 
-By instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own homologous genes analysis output using the current OrthoMCL release which uses a SQL database or the other homologous gene detection tools. When using a third-party tool to do homologous genes analysis, the input protein sequence files should follow these rules: 
-(1) gene must use the "locus_tag" (e.g. THIARS_RS06055) or "genename;locus_tag" (e.g. aioB;THIARS_RS06055) as the sequence id. 
+By instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own homologous genes analysis output using a third-party tool (e.g. the current OrthoMCL release which uses a SQL database). When using a third-party tool to do homologous genes analysis, the input protein sequence files should follow these rules: 
+(1) Must use the "locus_tag" (e.g. THIARS_RS06055) or "genename;locus_tag" (e.g. aioB;THIARS_RS06055) as the sequence id. We recommonded users to use the protein sequence files produced by Gcluster as input data to detect homologous genes. 
+
 (2) the format of output must keep consistent with that of the "all_orthomcl.out" created by Gcluster. In the all_orthomcl.out file, each row contains a set of homologous gene cluster, and the format looks like this "cluster_1*: gene1 gene2 gene3 ...". 
 
-We recommonded users to use the protein sequence files produced by Gcluster as input data to detect homologous genes. 
-
-
-Please following these steps to :
+Please following these steps:
 
 (1) Run Gcluster to create a figure according to your customized options;
-(2) Open "Gcluster_output_directory/directory_homologs_cluster", which is the place to hold the homologous gene cluster file "all_orthomcl.out" generated by Gcluster. Place your supplied output into this directory, rename it with suffix ".out" (e.g. group.out), and delete "all_orthomcl.out"; 
-(3) Run Gcluster again with the same options as step (1), but add the option "-strat_at_map T".
-
-*** It should be noted that the homologous gene clusters file created by users must be renamed with suffix "out" (e.g. *group.out*), and the origial homologous gene clusters file generated by Gcluster should be deleted from blast_homologs_cluster.gbk directory.
-
- perl Gcluster.pl -dir [genbank_file_directory] -gene [interested_gene_file] -tree [phylogenetic_file] -o [Gcluster_output_directory] -m [multiple_threads] -n [flanking_gene_number] [Options]
+(2) Open "Gcluster_output_directory/directory_homologs_cluster", which is the place to hold the homologous gene cluster file "all_orthomcl.out" generated by Gcluster. Place your supplied homologous genes analysis output into this directory, rename it with suffix ".out" (e.g. group.out), and delete "all_orthomcl.out"; 
+(3) Run Gcluster again with the same options as step (1), but add the option "-start_at_map T".
  
-
 ### Detailed Explanations for Arguments in Gcluster
 
 ```
