@@ -166,11 +166,9 @@ To run Gcluster, users only need to prepare two mandatory input datas: (1) Genba
 Four input datas are as follows:
 
 #### * Genbank_file_directory (mandatory option)
-Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). 
-
-Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
-	* Genomes must be annotated
-	* Special characters and blank are not allowed in file names
+Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+*Genomes must be annotated
+*Special characters and blank are not allowed in file names
 
 #### * interested_gene_file (mandatory option)
 interested_gene_file: a list of genes of interest, in which each row contains a locus tag of the gene of interest, and each genome has only one gene. For example, if there are 50 genomes in "genbank_file_directory", each of these 50 genomes must have a locus tag of gene of interest in "interested_gene_file". It should be noted that each genome must contains only one locus tag in the interested_gene_file if a phylogenetic_file option is used.
