@@ -352,6 +352,8 @@ It should be noted that the homologous gene clusters file created by users must 
              To color the border of the RNA (tRNA, rRNA) genes (Default: red), users can choose from blue, black, red, white, gray, dgray.
        -no_color_f, --gene_no_color_filled
              To fill uniqe genes (including RNA genes), pseudo genes, and homologous gene clusters not meeting the criteria set by "percent_strain_homologouscluster_color" parameter with a single color (Default: white), users can choose from blue, black, red, white, gray, dgray.
+       -dw, --line_drawing_width    
+             Set the line drawing width (Default: 1).
        -l, --arrow_relative_Length    
              Set the relative length of the gene arrow (Default: 4).
        -w, --arrow_relative_Height
