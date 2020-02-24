@@ -34,6 +34,7 @@ if ($check_g eq 0){
 print "\n\n\n\n\nTest-step3: Begin test interested_gene_generation.pl...\n";
 print "################################################################\n";
 my $check_i = system ("perl $script_dir/interested_gene_generation.pl -dir $script_dir/test_data/gbk -db $script_dir/test_data/aioB.fasta -m 4");
+# my $check_g = system ("perl $script_dir/Gcluster.pl -dir /home/xiangyang/Gcluster_v1.01-master/test_data/160_gbk -gene /home/xiangyang/Gcluster_v1.01-master/test_data/interested_gene_name.txt -tree /home/xiangyang/Gcluster_V1.01/160_data/160_tree/160.rRNA.nwk -m 10 -n 10 -size 1 -dis 5 -l 1 -w 1 -PNG T -map T -strain_name_font_size 3 -scale 0.15 -x_step 1 -dw 0.2");
 print "################################################################\n";
 if ($check_i eq 0){
     print "Ok, interested_gene_generation.pl works success!\n\n";
