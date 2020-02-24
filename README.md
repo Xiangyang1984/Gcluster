@@ -166,14 +166,14 @@ To run Gcluster, users only need to prepare two mandatory input datas: (1) Genba
 Four input data are as follows:
 
 #### Genbank_file_directory (mandatory option)
-Genbank_file_directory : A directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Genbank files can download from NCBI, Rast or other genome annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+Genbank_file_directory: a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). 
 
-
-	$ ascp -i $asperaweb_id_dsa_openssh -i $aspera_tokenauth_id_rsa -P 22 -O 33001 -k 1 -T -l 200m --mode=recv --user=anonftp --host=ftp.ncbi.nlm.nih.gov --file-list=$FTP_download_site_list $out_dir
-
+Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+* Genomes must be annotated
+* Special characters and blank are not allowed in file names
 
 #### interested_gene_file (mandatory option)
-interested_gene_file: A list of the interested gene, in which each row contains a locus tag of the interested gene for individual genome. 
+interested_gene_file: a list of genes of interest, in which each row contains a locus tag of the gene of interest, and each genome has only one gene. For example, if there are 50 genomes in "genbank_file_directory", each of these 50 genomes must have a locus tag of gene of interest in "interested_gene_file". It should be noted that each genome must contains only one locus tag in the interested_gene_file if a phylogenetic_file option is used.
 
 A gene of interest file generated looks like:
 
@@ -185,21 +185,29 @@ KUC_RS10495	#Halomonas_boliviensis_LC1
 KYC_RS14580	#Achromobacter_arsenitoxydans_SY8
 ...
 ```
-*Users are recommended  to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis using multiple threads:* 
 
-```perl
-$ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
-```
-it would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, the blast hits are listed for each genome per row; the best hit (top hit) was used as gene of interest for each genome, and the other none-top hits are also listed followed by "#".
+The locus tag of the gene of interest can be found directly using keywords in GenBank files or in BLAST outputs from online sources (e.g. NCBI, RAST). if visualizing and comparing many genomes, Users are recommended to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis. 
 
-aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
+interested_gene_generation.pl needs "Genbank_file_directory" (the same input file data for Gcluster.pl) and "a blast database file" to run. In the "./test_data" directory, aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
+
 ```
 $ cat test_data/aioB.fasta
 >YO5_RS17935
 MSQFKDRVPLPPIDAQKTNMACHFCIVGCGYHVYKWPANKEGGRAPEQNALNVDFTRQVPPMQITMTPAMVNRIKDNDGSEHNIMIIPDKECEVNKGLSSTRGGQMASIMYSENTPIGERRLKVPMLYTGDDWIETTWQQSMDIYAGLTKRILDEDGPEQILFNLFDHGGAGGGFENTWATGKLIFSGIGTPMVRIHNRPAYNSECHATRDMGVGELNNSYEDAELADVLISIGNNPYESQTNYFLAHWVPNLQGATTGKKKERYPGESFAKAKIIFVDPRRTISVDISETVAGKDHVLHLAINPGTDTALFNGLLTYVVEKGWQDDEFIQNHTTGFDDTLASNKLSLSECSVITGITEDDLRKAAEWAYQPKESGHAPRTMHAYEKGVIWGNDNYRIQSSIVNLVLATHNVGRRGTGVVRMGGHQEGYVRPPYPGGRPAPYIDQEIIKNNGMMLTVWACNAFQTTVNAETYREAVKRRANIVNQALAKARGASTEQLINIIYDAVKNQGGLYLVDIDLYRTKFADSSHMLLPAAHPGEMNLTSMNGERRLRLSERFMDPPGIAKADCMIAADMANALKRLYEGEGNTEMAQRFSGFDWQSEEDSFNDGFRMAHEKEIDSQGGPTGHLATYERLRAAGTNGVQLPIKEYRDGKLIGTEILYSDNTFDTDDGKAHFQPSPWNGFPAVIEAQQKNHAFWINNGRTNHIWQSAYHDQHLSFRKGRFPMAPLEINPEDAAQLGIAAGDIVEIYNDYGATYAMAYPEPDIKRGQVFMMFGYPNGVQGDTVSEWTDRNVIPYYKGAWADIRKVGENEAYKHSVSFKRRRYS
 ```
+
+Run interested_gene_generation.pl using the following conmmand: 
+(** for numerous genomes, set "-m" option to use multiple threads)
+
+```perl
+$ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
+```
+It would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, the blast hits are listed for each genome per row; the best hit (top hit) was used as gene of interest for each genome, and the other none-top hits are also listed followed by "#".
+
+Users can use the interested_gene_name.txt as "interested_gene_file", or prepare an interested_gene_file refering to the interested_gene_name.txt. 
+
 #### phylogenetic_file (optional option) 
-A Newick format phylogenetic tree is used by Gcluster to automatically accociate the genomes with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) for batch extraction of 16S rRNA gene sequences from gbk directory, which can be used to build a 16S rRNA tree using software like [MEGA](https://www.megasoftware.net/) .
+A Newick format phylogenetic tree is used by Gcluster to automatically accociate the genomic contexts with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) for batch extraction of 16S rRNA gene sequences from gbk directory, which can be used to build a 16S rRNA gene tree using software like [MEGA](https://www.megasoftware.net/) .
 
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
@@ -208,14 +216,14 @@ A example of the strain_reorder_file looks like:
 |strain\_name | order|
 |- | -|
 |Thiomonas_sp.\_FB-Cd| 1|
-|Thiomonas_sp.\_X19| 2|
+|Thiomonas_sp.\_X19| 4|
 |Thiomonas_delicata_DSM\_16361| 3|
-|Thiomonas_intermedia_ATCC_15466| 4|
+|Thiomonas_intermedia_ATCC_15466| 2|
 |Thiomonas_sp.\_B1| 5|
 |Thiomonas_sp.\_ACO7| 6|
-|Thiomonas_intermedia\_K12| 8|
+|Thiomonas_intermedia\_K12| 9|
 |Thiomonas_arsenitoxydans\_3As| 7|
-|Thiomonas_sp.\_ACO3| 9|
+|Thiomonas_sp.\_ACO3| 8|
 
 ### Running Gcluster
 
