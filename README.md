@@ -157,13 +157,13 @@ The Warning happens because the user database has less than 5 sequences in it. O
 
 ## Usage
 ***
-It is very simple to use Gcluster. First, you should prepare input data (Genbank_file_directory, and a list of gene of interest); then, users could run Gcluster like this; finally, after a figure created, it can be modified by adjusting the parameters (refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. The brief overview of running the Gcluster is as follows:
+It is very simple to use Gcluster. First, prepare input datas (must containing Genbank_file_directory, and interested_gene_file); then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure is will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
 
 ### Preparation of Input Data
 
-To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory, a directory containing annotated genomes in GenBank format, and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or map the genome contexts to the phylogenetic tree. 
+To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory and (2) a list of gene of interest. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or auto-map the genome contexts to the phylogenetic tree. 
 
-Four input data are as follows:
+Four input datas are as follows:
 
 #### Genbank_file_directory (mandatory option)
 Genbank_file_directory: a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). 
@@ -188,7 +188,7 @@ KYC_RS14580	#Achromobacter_arsenitoxydans_SY8
 
 The locus tag of the gene of interest can be found directly using keywords in GenBank files or in BLAST outputs from online sources (e.g. NCBI, RAST). if visualizing and comparing many genomes, Users are recommended to use interested_gene_generation.pl in Gcluster package to obtain a list of locus tag of interested genes based on a local blastp analysis. 
 
-interested_gene_generation.pl needs "Genbank_file_directory" (the same input file data for Gcluster.pl) and "a blast database file" to run. In the "./test_data" directory, aioB.fasta is a blast database file in FASTA format, which contains at least one protein sequence homologous to the gene of interest.
+interested_gene_generation.pl needs "Genbank_file_directory" (the same input file data for Gcluster.pl) and "a blast database file" to run. A blast database file, a protein database in FASTA format, which contains at least one protein sequence homologous to the gene of interest. For example, In the "./test_data" directory, aioB.fasta is a blast database file.
 
 ```
 $ cat test_data/aioB.fasta
@@ -197,22 +197,29 @@ MSQFKDRVPLPPIDAQKTNMACHFCIVGCGYHVYKWPANKEGGRAPEQNALNVDFTRQVPPMQITMTPAMVNRIKDNDGS
 ```
 
 Run interested_gene_generation.pl using the following conmmand: 
-(** for numerous genomes, set "-m" option to use multiple threads)
+(** if many genomes are used to analysis, set "-m" option to use multiple threads, e.g. -m 4)
 
 ```perl
 $ perl interested_gene_generation.pl -dir test_data/Genbank_file_directory -db test_data/aioB.fasta
 ```
 It would generate a output file named (e.g. [test_data/interested_gene_name.txt](https://github.com/Xiangyang1984/Gcluster/blob/master/test_data/interested_gene_name.txt)). In this file, the blast hits are listed for each genome per row; the best hit (top hit) was used as gene of interest for each genome, and the other none-top hits are also listed followed by "#".
 
-Users can use the interested_gene_name.txt as "interested_gene_file", or prepare an interested_gene_file refering to the interested_gene_name.txt. 
+Users can directly use the interested_gene_name.txt as "interested_gene_file", or create a new interested_gene_file based on the interested_gene_name.txt. 
 
 #### phylogenetic_file (optional option) 
-A Newick format phylogenetic tree is used by Gcluster to automatically accociate the genomic contexts with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) for batch extraction of 16S rRNA gene sequences from gbk directory, which can be used to build a 16S rRNA gene tree using software like [MEGA](https://www.megasoftware.net/) .
+A phylogenetic tree must be Newick format. It is used by Gcluster to automatically accociate the genomic contexts with their phylogeny. It should be noted that all nodes name in provided tree must completely match with the genbank files name of all genomes. Gcluster provides a perlscript ([script/extract_rRNA_dir.pl](https://github.com/Xiangyang1984/Gcluster/blob/master/script/extract_rRNA_dir.pl)) for batch extraction of 16S rRNA gene sequences from gbk directory, which can be used to build a 16S rRNA gene tree using software like [MEGA](https://www.megasoftware.net/).
+
+For example, In the "./test_data" directory, "16S_rRNA_tree.nwk" is a Newick format phylogenetic tree that looks like:
+
+```
+((Thiomonas_arsenitoxydans_3As:0.00000000,(Thiomonas_intermedia_K12:0.00000000,(Thiomonas_sp._ACO3:0.00000000,(Thiomonas_sp._ACO7:0.00000000,Thiomonas_sp._B1:0.00000000)0.9480:0.00000000)0.9480:0.00000000)0.9480:0.00000000)0.9480:0.00114649,Thiomonas_intermedia_ATCC_15466:0.00539174,((Thiomonas_delicata_DSM_16361:0.00511954,Thiomonas_sp._X19:0.00997309)0.6650:0.00159532,Thiomonas_sp._FB-Cd:0.00731752)1.0000:0.05355405);
+```
 
 #### strain_reorder_file (optional option)
 A two-column tab-delimited text file is used to sort genomes from up to down accoding to users requirement. Each row must consist of a strain name followed by the numerical order that is used for sorting genomes. It should be noted that all strains name must completely match with the genbank files name of all genomes. Gcluster needs a "strain_reorder_file" or a "phylogenetic_file", but not both at the same time. 
 
-A example of the strain_reorder_file looks like:
+For example, In the "./test_data" directory, "temp_strain_reorder_file" is a strain reorder file that looks like:
+
 |strain\_name | order|
 |- | -|
 |Thiomonas_sp.\_FB-Cd| 1|
