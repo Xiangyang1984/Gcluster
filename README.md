@@ -1,6 +1,6 @@
 Gcluster_v2.0.1
 ===
-***
+
 Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.com/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
 
 
@@ -24,7 +24,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 
 
 # Installation
-***
+
 Gcluster is a Perl script which doesn't need compilation. But before running, Gcluster needs to pre-install several Perl modules and three extra programs. In addition, the paths of those three programs within Gcluster.pl and interested_gene_generation.pl must be set. There are two ways to install the Gcluster.
 
 ## Installing the Gcluster via Conda
@@ -150,7 +150,7 @@ Once Gcluster installation finished, a small dataset in the **./test_data** dire
 The Warning happens because the user database has less than 5 sequences in it. Once all tests have passed then you are ready to start using the Gcluster.  
 
 # Usage
-***
+
 It is very simple to use Gcluster. First, prepare input datas, at least containing Genbank_file_directory and interested_gene_file; then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
 
 ## Preparation of Input Datas
@@ -270,12 +270,13 @@ After a figure has been created, the user can customize figure by modofication o
 
 Gcluster offers flexibility to customize figure, mainly contains:
 
-* Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
+**Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on.** To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
 
-* Revising the gene label. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+**Revising the gene label** Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
   
 Exzample for editing the locus_tag in sub_TFT file: 
-sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
+
+Sub_TFT files are located in "Gcluster_output_directory/directory_part_TFT". a sub_TFT file looks like:
 
 	3070412	3069432	CDS	THI_RS14510	hypothetical protein	NC_014145
 	3070903	3070325	CDS	THI_RS14515	hypothetical protein	NC_014145
@@ -310,9 +311,10 @@ _revised to:_
 Run Gcluster again with the same options as the first run, but add the option "-start_at_map T". In the new figure, all genes homologous to THI_RS14520 will have gene label "moeA" in output figure if option "--unification_label" set to "T".
 
 
-* Using yourself homologous gene clusters
+**Using yourself homologous gene clusters**
 
 By instead of "all_orthomcl.out" created by Gcluster, users can supply homologous gene clusters from their own homologous genes analysis output using a third-party tool (e.g. the current OrthoMCL release which uses a SQL database). When using a third-party tool to do homologous genes analysis, the input protein sequence files should follow these rules: 
+
 	* Must use the "locus_tag" (e.g. THIARS_RS06055) or "genename;locus_tag" (e.g. aioB;THIARS_RS06055) as the sequence id. We recommonded users to use the protein sequence files produced by Gcluster as input data to detect homologous genes. 
 
 	* the format of output must keep consistent with that of the "all_orthomcl.out" created by Gcluster. In the all_orthomcl.out file, each row contains a set of homologous gene cluster, and the format looks like this "cluster_1*: gene1 gene2 gene3 ...". 
@@ -320,7 +322,9 @@ By instead of "all_orthomcl.out" created by Gcluster, users can supply homologou
 Please following these steps:
 
 (1) Run Gcluster to create a figure according to your customized options;
+
 (2) Open "Gcluster_output_directory/directory_homologs_cluster", which is the place to hold the homologous gene cluster file "all_orthomcl.out" generated by Gcluster. Place your supplied homologous genes analysis output into this directory, rename it with suffix ".out" (e.g. group.out), and delete "all_orthomcl.out"; 
+
 (3) Run Gcluster again with the same options as step (1), but add the option "-start_at_map T".
  
 ## Detailed Explanations for Arguments in Gcluster
