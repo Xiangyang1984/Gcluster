@@ -48,7 +48,7 @@ The Gcluster requires Perl as well as Perl modules including GD; GD::SVG, SVG; t
 
 These modules can be installed with cpan using:
 
-	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars Bio::SeqIO Bio::Tree::NodeI Bio::TreeIO
+	$ sudo cpan install GD GD::SVG SVG threads File::Basenamey FindBin lib Getopt::Long Math::BigFloat Storable vars BioPerl
 
 
 #### Step 3: Programs installation
