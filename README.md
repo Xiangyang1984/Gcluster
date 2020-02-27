@@ -160,11 +160,10 @@ To run Gcluster, users only need to prepare two mandatory input datas: (1) Genba
 Four input datas are as follows:
 
 #### * Genbank_file_directory (mandatory option)
-Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can download from NCBI, Rast or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can be retrived from NCBI, RAST or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
-* Genomes must be annotated
+It should be noted that genomes must be annotated, and special characters and blank are not allowed in file names.
 
-* Special characters and blank are not allowed in file names
 
 #### * interested_gene_file (mandatory option)
 interested_gene_file: a list of genes of interest, in which each row contains a locus tag of the gene of interest, and each genome has only one gene. For example, if there are 50 genomes in "genbank_file_directory", each of these 50 genomes must have a locus tag of gene of interest in "interested_gene_file". It should be noted that each genome must contains only one locus tag in the interested_gene_file if a phylogenetic_file option is used.
@@ -228,7 +227,7 @@ For example, In the "./test_data" directory, temp_strain_reorder_file is a strai
 
 ## Running Gcluster
 
-It is very simple to run Gcluster.pl. Here, we provided several examples to show how to use Gcluster.pl. All input datas come from [./test_data](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/) in Gcluster package. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".
+Here, we provided several examples to show how to use Gcluster.pl. All input datas come from [./test_data](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/) in Gcluster package. To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".
 
 #### Example 1: A simple mode to visualize genome contexts for genomes
 
@@ -267,13 +266,13 @@ Runs Gcluster.pl using the input gbk files under ./test_data/gbk, interested_gen
 	
 ## Customization of the Figure
 
-After a figure has been created, the user can customize figure by modofication of the parameters and re-draw the figure by using option "--start_at_map = T", which is very useful option to customize the map quickly. 
+After a figure has been created, the user can customize figure by modofication of the parameters, and re-draw the figure by using option "--start_at_map = T", which is a useful option to customize the map quickly. 
 
 Gcluster offers flexibility to customize figure, mainly contains:
 
 **Adjusting the margins, the interval between two neighboring genomes, the text size, the gene length and width, the scale, the rotation angle of gene labels, the order of genome contexts and so on.** To get more information about the options, please refer to the Section: [Detailed Explanations for Arguments in Gcluster.pl](#detailed-explanations-for-arguments-in-Gcluster) in the README.md file or use "Gcluster.pl -h".  
 
-**Revising the gene label**. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out. 
+**Revising the gene label**. Users can revise the gene label by directly edition of the locus_tag in sub_TFT file or all_orthomcl.out file. 
   
 * Exzample 1: editing the locus_tag in sub_TFT file: 
 
