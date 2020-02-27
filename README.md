@@ -160,7 +160,7 @@ To run Gcluster, users only need to prepare two mandatory input datas: (1) Genba
 Four input datas are as follows:
 
 #### * Genbank_file_directory (mandatory option)
-Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can be retrived from NCBI, RAST or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
+Genbank_file_directory, a directory containing annotated genomes as Genbank format file (e.g. [test_data/gbk](https://github.com/Xiangyang1984/Gcluster/tree/master/test_data/gbk)). Download Genbank files and put them into a directory. Genbank files can be retrieved from NCBI, RAST or other genomic annotation piplines. For a large number of genomes, users are recommended to download from NCBI genome database (https://www.ncbi.nlm.nih.gov/genome/browse/#!/overview/) using [Aspera](https://downloads.asperasoft.com/), a high-speed file transfer tool. 
 
 It should be noted that genomes must be annotated, and special characters and blank are not allowed in file names.
 
