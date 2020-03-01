@@ -14,7 +14,7 @@ Gcluster is a simple-to-use tool for visualizing and comparing genome contexts f
 	
  * [Usage](#usage)
  
- 	* [Preparation of Input Datas](#preparation-of-input-datas)
+ 	* [Preparation of Input Data](#preparation-of-input-data)
 	
  	* [Running Gcluster.pl](#running-gcluster)
 	
@@ -153,7 +153,7 @@ The Warning happens because the user database has less than 5 sequences in it. O
 
 It is very simple to use Gcluster. First, prepare input datas, at least containing Genbank_file_directory and interested_gene_file; then, run Gcluster like this "perl Gcluster.pl -dir Genbank_file_directory -gene interested_gene_file", and a figure will be created; finally, customize the figure by adjusting the parameters (please refer to [Detailed Explanations for Arguments](#detailed-explanations-for-arguments-in-gcluster)) or editing the gene label, and re-run Gcluster to obtain a high-quality figure. 
 
-## Preparation of Input Datas
+## Preparation of Input Data
 
 To run Gcluster, users only need to prepare two mandatory input datas: (1) Genbank_file_directory and (2) interested_gene_file. In addition, if a strain_reorder_file or a phylogenetic_file provided, Gcluster can sort the genomes context according to the strain ordering infomation, or auto-map the genome contexts to the phylogenetic tree. 
 
