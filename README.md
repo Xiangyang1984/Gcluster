@@ -32,7 +32,7 @@ We have build a bioconda package for Gcluster. Users are recommended to install 
 
 	$ conda install -c bioconda gcluster
 
-Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so users should be able to run Gcluster.
+Once installation finished, the absolute paths for mcl, blastp and makeblastdb have been auto-configured well for Gcluster.pl and interested_gene_generation.pl, so users should be able to run Grun itcluster. **if Gcluster is installed via Conda, all the three scripts (Gcluster.pl, interested_gene_generation.pl and test.pl) can be executed without adding "perl" in the front of these scripts. For example, run Gcluster.pl by just typing "Gcluster.pl <arg1> <arg2>" in the command line instead of having to type "perl Gcluster.pl <arg1> <arg2".**
 
 ## Installing the Gcluster from Source Code
 Gcluster is available at https://github.com/xiangyang1984/Gcluster.git. Installation Gcluster can be accomplished by downloading the code and then following the steps below.
@@ -75,7 +75,7 @@ This software is available at http://micans.org/mcl/
 ## Test the Gcluster with Example Data
 Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOS**) successfully or not using the **test.pl** script as below:
 
-	$ perl ./test.pl
+	$ perl ./test.pl (Gcluster is intalled from source code) or  $ test.pl (if Gcluster is installed via Conda)
 	
 	Test-step1: Begin test Gcluster.pl...
 	################################################################
