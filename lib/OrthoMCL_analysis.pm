@@ -930,14 +930,16 @@ sub bacth_blast {
     my $job_number=0;
     print "Blast_perform_percent: ";
     while(){ 
-        last if ($job_number>=$work_number);                         
+        last if ($job_number eq $work_number);                         
         while(scalar(threads->list())<$thread_number) {     #set threadnumber；
             $job_number++;                                 
             my $input_file = $input[$job_number-1];
             my $output_file = $outfile[$job_number-1];
             my $Blast_progress = int (($job_number/$work_number)*100);
             print "$Blast_progress","...";
-            $threads[$job_number-1]=threads->new(\&$subfunction, $input_file, $db_file, $output_file, $e_value, $blastp);   
+            $threads[$job_number-1]=threads->new(\&$subfunction, $input_file, $db_file, $output_file, $e_value, $blastp);  
+	    last if ($job_number eq $work_number);                         
+
             }
 
         foreach $thread(threads->list(threads::all)){
