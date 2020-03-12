@@ -77,7 +77,7 @@ This software is available at http://micans.org/mcl/
 ## Test the Gcluster with Example Data
 Once Gcluster installation finished, a small dataset in the **./test_data** directory can be used to test whether Gcluster (for **Gcluster.pl** and **interested_gene_generation.pl**) can run on your system (**Linux/MacOS**) successfully or not using the **test.pl** script as below:
 
-	$ perl ./test.pl (Gcluster is intalled from source code) or  $ test.pl (if Gcluster is installed via Conda)
+	$ perl ./test.pl (if Gcluster is intalled from source code) or  $ test.pl (if Gcluster is installed via Conda)
 	
 	Test-step1: Begin test Gcluster.pl...
 	################################################################
