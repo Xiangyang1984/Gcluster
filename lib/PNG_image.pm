@@ -126,9 +126,10 @@ sub create_image_PNG {
         
    
         foreach my $tbl_part_file(sort @dir_part_TFT){ 
-
-            if(($tbl_part_file =~ /$check_value/) and ($tbl_part_file =~ /part$/)) {
-
+            my $tbl_part_file_new = $tbl_part_file;
+            $tbl_part_file_new =~ s/.tbl_.*//g;                
+	    
+            if(($tbl_part_file_new eq $check_value) and ($tbl_part_file =~ /part$/)) { 
                 $tbl_part_file =~ s/(.tbl_.*)//g;
                 if ($tbl_part_file eq $check_value) {
                     $tbl_part_file .=$1; 
