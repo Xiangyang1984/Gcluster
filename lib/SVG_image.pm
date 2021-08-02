@@ -124,7 +124,7 @@ sub create_image_SVG {
 
             foreach my $tbl_part_file(sort @dir_part_TFT){ 
                 my $tbl_part_file_new = $tbl_part_file;
-                $tbl_part_file_new =~ s/.tbl_.*//g; To voild some genomes having similar name, edited by Xiangyang Li on Aug 7, 2020
+                $tbl_part_file_new =~ s/.tbl_.*//g; #To voild some genomes having similar name, edited by Xiangyang Li on Aug 7, 2020
                 if(($tbl_part_file_new eq $check_value) and ($tbl_part_file =~ /part$/)) { # delete temp file generated when part_TFT file were edited to modify the genename
 
                     $tbl_part_file =~ s/(.tbl_.*)//g;
