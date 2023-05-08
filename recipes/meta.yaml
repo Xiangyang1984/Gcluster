@@ -1,6 +1,6 @@
 {% set name = "Gcluster" %}
 {% set version = "2.0.8" %}
-{% set sha256 = "1806c9e77bec28b55ae00f0aa27fa95525cb7dd50c436fa21a8c72baaa257335" %}
+{% set sha256 = "9b00b909d7a0d8715b2802600b9db7e0670c6c4907a7eb48ce2f61a83c23b65a" %}
 
 package:
   name: "{{ name|lower }}"
