@@ -201,6 +201,6 @@ sub maxlength_rRNA_genbank {
 
     }
 
-    #return $max_ID, $max_seq, $max_length;
+    return $max_ID, $max_seq, $max_length;
 
 }
