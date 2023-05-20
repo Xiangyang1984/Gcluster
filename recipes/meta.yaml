@@ -17,9 +17,6 @@ build:
 requirements:
   run:
     - mcl
-    - blast
-    - perl-gd
-    - perl-gd-svg
     - perl-svg
     - perl-bioperl-core
     #- git
