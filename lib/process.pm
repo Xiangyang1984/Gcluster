@@ -122,14 +122,27 @@ sub batch_genbank_sequence_TFT_extract {
 sub genbank_sequence_TFT_extract {
 
     my ($input, $output_1, $output_2)=@_;
+    
+    #record contigID for accession number
+    open(GINPUT, $input);
+    my @accession_num;
+    while(<GINPUT>){
+        chomp;
+        my $locus = $1 if $_ =~ /^LOCUS       (.*?) /;
+        #print "$locus\n" if $_ =~ /^LOCUS       (.*?) /;
+        push @accession_num, $locus if $_ =~ /^LOCUS       (.*?) /;
+    }
+    close GINPUT;
+    
     open(OUTPUT_1, ">$output_1");
     open(OUTPUT_2, ">$output_2");
-
+        my $filen = basename $input;
         my $in = new Bio::SeqIO( -file => $input, -format => 'genbank' );
-
+        my $contig_index = -1;
         while ( my $seqObject = $in->next_seq() ) {
-
+            $contig_index++;
             my $acc = $seqObject->accession;
+            $acc = $accession_num[$contig_index] if $acc eq "unknown";
             my @features = $seqObject->get_SeqFeatures();
             my $count = 0;       
             
@@ -201,7 +214,7 @@ sub genbank_sequence_TFT_extract {
                     my $locus_tag;
                     if ( $feat->has_tag('locus_tag') ) {
                         ($locus_tag) = $feat->get_tag_values('locus_tag');
-                    }else {$locus_tag = "CDS_$acc"."_".$count;}
+                    }else {$locus_tag = "$filen"."_".$count;}
                
                     my $product;
                     if ( $feat->has_tag('product') ) {
