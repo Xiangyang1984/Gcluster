@@ -1,7 +1,7 @@
 Gcluster
 ===
 
-Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at http://www.microbialgenomic.cn/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
+Gcluster is a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes. It is freely available at https://www.microbialgenomic.cn/Gcluster_tool.html and https://github.com/Xiangyang1984/Gcluster under an open source GPLv3 license. It is a stand-alone Perl application, which requires MCL, NCBI BLAST+ and several Perl Modules (e.g. GD, GD::SVG) to be installed before use.
 
 If using Gcluster, please cited: Li X, Chen F, Chen Y. Gcluster: a simple-to-use tool for visualizing and comparing genome contexts for numerous genomes, Bioinformatics 2020, 10.1093/bioinformatics/btaa212.
 
