@@ -159,7 +159,7 @@ Large test data is available at website (http://www.microbialgenomic.com/160_gen
 
 =AUTHOR
 
-Dr. Xiangyang Li (E-mail: lixiangyang\@fudan.edu.cn, lixiangyang1984\@gmail.com), Fudan university; Kaili University; Bacterial Genome Data mining & Bioinformatic Analysis (http://www.microbialgenomic.com/).
+Dr. Xiangyang Li (E-mail: lixiangyang\@fudan.edu.cn, lixiangyang1984\@gmail.com), Fudan university; Kaili University; Bacterial Genome Data mining & Bioinformatic Analysis (http://www.microbialgenomic.cn/).
 
 =COPYRIGHT
 
